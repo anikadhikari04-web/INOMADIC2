@@ -49,11 +49,11 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav - Right */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-5">
             {navLinks.map((link) => (
               <Link key={link.path} href={link.path}>
                 <span
-                  className={`text-sm font-medium tracking-wider uppercase transition-colors hover:text-primary hover:text-glow cursor-pointer ${
+                  className={`text-xs font-medium tracking-wider uppercase transition-colors hover:text-primary hover:text-glow cursor-pointer ${
                     location === link.path ? "text-primary text-glow" : "text-gray-400"
                   }`}
                 >
@@ -66,10 +66,10 @@ export function Navbar() {
             <Link href="/connect">
               <motion.span
                 whileTap={{ scale: 0.93, y: 2 }}
-                className={`cursor-pointer text-sm font-semibold tracking-wider uppercase px-5 py-2 rounded-2xl border select-none transition-all duration-200
+                className={`cursor-pointer text-xs font-semibold tracking-wider uppercase px-4 py-1.5 rounded-xl border select-none transition-all duration-200
                   ${location === "/connect"
-                    ? "bg-primary/20 border-primary text-primary shadow-[0_0_18px_rgba(0,255,136,0.6),0_4px_16px_rgba(0,255,136,0.25),inset_0_1px_0_rgba(255,255,255,0.15)] text-glow"
-                    : "bg-primary/10 border-primary/60 text-primary hover:bg-primary/20 hover:border-primary hover:shadow-[0_0_18px_rgba(0,255,136,0.5),0_4px_16px_rgba(0,255,136,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] shadow-[0_2px_8px_rgba(0,255,136,0.15),inset_0_1px_0_rgba(255,255,255,0.08)]"
+                    ? "bg-primary/20 border-primary text-primary shadow-[0_0_14px_rgba(0,255,136,0.6),0_4px_12px_rgba(0,255,136,0.25),inset_0_1px_0_rgba(255,255,255,0.15)] text-glow"
+                    : "bg-primary/10 border-primary/60 text-primary hover:bg-primary/20 hover:border-primary hover:shadow-[0_0_14px_rgba(0,255,136,0.5),0_4px_12px_rgba(0,255,136,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] shadow-[0_2px_6px_rgba(0,255,136,0.15),inset_0_1px_0_rgba(255,255,255,0.08)]"
                   }`}
                 style={{ textShadow: "0 0 8px rgba(0,255,136,0.5)" }}
               >

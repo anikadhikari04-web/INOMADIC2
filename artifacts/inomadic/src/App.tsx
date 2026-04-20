@@ -12,6 +12,8 @@ import About from "@/pages/About";
 import OurWorks from "@/pages/OurWorks";
 import Contact from "@/pages/Contact";
 import ConnectUs from "@/pages/ConnectUs";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
+import TermsOfService from "@/pages/TermsOfService";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +25,8 @@ function Router() {
       <Route path="/our-works" component={OurWorks} />
       <Route path="/contact" component={Contact} />
       <Route path="/connect" component={ConnectUs} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/terms-of-service" component={TermsOfService} />
       <Route component={NotFound} />
     </Switch>
   );

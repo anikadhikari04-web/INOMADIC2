@@ -98,8 +98,12 @@ export function Footer() {
             &copy; {currentYear} INOMADIC. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-gray-500">
-            <a href="#" className="hover:text-gray-300 transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-gray-300 transition-colors">Terms of Service</a>
+            <Link href="/privacy-policy">
+              <span className="hover:text-gray-300 transition-colors cursor-pointer">Privacy Policy</span>
+            </Link>
+            <Link href="/terms-of-service">
+              <span className="hover:text-gray-300 transition-colors cursor-pointer">Terms of Service</span>
+            </Link>
           </div>
         </div>
       </div>
