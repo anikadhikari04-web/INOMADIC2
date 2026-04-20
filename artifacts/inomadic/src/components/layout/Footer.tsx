@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { SiBehance, SiInstagram, SiFacebook, SiX, SiYoutube } from "react-icons/si";
 import { FaLinkedinIn } from "react-icons/fa";
+import logo from "@assets/icon_1776665343507.png";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -20,7 +21,14 @@ export function Footer() {
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-2">
-            <h2 className="text-2xl font-bold text-white mb-4 tracking-wider">INOMADIC</h2>
+            {/* Logo replacing INOMADIC text */}
+            <Link href="/">
+              <img
+                src={logo}
+                alt="INOMADIC"
+                className="h-12 w-auto mb-5 cursor-pointer drop-shadow-[0_0_10px_rgba(0,255,136,0.3)] hover:drop-shadow-[0_0_20px_rgba(0,255,136,0.6)] transition-all duration-300"
+              />
+            </Link>
             <p className="text-gray-400 max-w-md mb-6 leading-relaxed">
               We Don't Just Create. We Captivate. Visual storytelling agency crafting brand films, motion graphics & immersive digital experiences.
             </p>
@@ -42,25 +50,28 @@ export function Footer() {
               })}
             </div>
           </div>
-          
+
           <div>
             <h3 className="text-white font-semibold mb-6 tracking-wide uppercase text-sm">Navigation</h3>
             <ul className="flex flex-col gap-3">
-              {["Home", "About", "Our Works", "Contact", "Connect Us"].map((item) => {
-                const path = item === "Home" ? "/" : `/${item.toLowerCase().replace(" ", "-")}`;
-                return (
-                  <li key={item}>
-                    <Link href={path}>
-                      <span className="text-gray-400 hover:text-primary transition-colors cursor-pointer text-sm">
-                        {item}
-                      </span>
-                    </Link>
-                  </li>
-                );
-              })}
+              {[
+                { label: "Home", path: "/" },
+                { label: "About", path: "/about" },
+                { label: "Our Works", path: "/our-works" },
+                { label: "Submission", path: "/contact" },
+                { label: "Connect Us", path: "/connect" },
+              ].map((item) => (
+                <li key={item.path}>
+                  <Link href={item.path}>
+                    <span className="text-gray-400 hover:text-primary transition-colors cursor-pointer text-sm">
+                      {item.label}
+                    </span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-white font-semibold mb-6 tracking-wide uppercase text-sm">Contact</h3>
             <ul className="flex flex-col gap-3 text-sm text-gray-400">
@@ -81,7 +92,7 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        
+
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm">
             &copy; {currentYear} INOMADIC. All rights reserved.

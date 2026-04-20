@@ -8,8 +8,7 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
   { name: "Our Works", path: "/our-works" },
-  { name: "Contact", path: "/contact" },
-  { name: "Connect Us", path: "/connect" },
+  { name: "Submission", path: "/contact" },
 ];
 
 export function Navbar() {
@@ -38,7 +37,18 @@ export function Navbar() {
         }`}
       >
         <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-          {/* Desktop Nav - Left */}
+          {/* Logo - Left */}
+          <Link href="/">
+            <div className="cursor-pointer h-14 w-auto group relative">
+              <img
+                src={logo}
+                alt="INOMADIC"
+                className="h-full w-auto object-contain drop-shadow-[0_0_12px_rgba(0,255,136,0.35)] group-hover:drop-shadow-[0_0_24px_rgba(0,255,136,0.65)] transition-all duration-300"
+              />
+            </div>
+          </Link>
+
+          {/* Desktop Nav - Right */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link key={link.path} href={link.path}>
@@ -51,6 +61,21 @@ export function Navbar() {
                 </span>
               </Link>
             ))}
+
+            {/* Connect Us — 3D glowing button */}
+            <Link href="/connect">
+              <motion.span
+                whileTap={{ scale: 0.93, y: 2 }}
+                className={`cursor-pointer text-sm font-semibold tracking-wider uppercase px-5 py-2 rounded-2xl border select-none transition-all duration-200
+                  ${location === "/connect"
+                    ? "bg-primary/20 border-primary text-primary shadow-[0_0_18px_rgba(0,255,136,0.6),0_4px_16px_rgba(0,255,136,0.25),inset_0_1px_0_rgba(255,255,255,0.15)] text-glow"
+                    : "bg-primary/10 border-primary/60 text-primary hover:bg-primary/20 hover:border-primary hover:shadow-[0_0_18px_rgba(0,255,136,0.5),0_4px_16px_rgba(0,255,136,0.2),inset_0_1px_0_rgba(255,255,255,0.12)] shadow-[0_2px_8px_rgba(0,255,136,0.15),inset_0_1px_0_rgba(255,255,255,0.08)]"
+                  }`}
+                style={{ textShadow: "0 0 8px rgba(0,255,136,0.5)" }}
+              >
+                Connect Us
+              </motion.span>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -60,17 +85,6 @@ export function Navbar() {
           >
             <Menu size={28} />
           </button>
-
-          {/* Logo - Right */}
-          <Link href="/">
-            <div className="cursor-pointer h-10 w-auto group relative">
-              <img
-                src={logo}
-                alt="INOMADIC"
-                className="h-full w-auto object-contain drop-shadow-[0_0_10px_rgba(0,255,136,0.3)] group-hover:drop-shadow-[0_0_20px_rgba(0,255,136,0.6)] transition-all duration-300"
-              />
-            </div>
-          </Link>
         </div>
       </header>
 
@@ -98,7 +112,7 @@ export function Navbar() {
               >
                 <X size={28} />
               </button>
-              
+
               <nav className="flex flex-col gap-8">
                 {navLinks.map((link) => (
                   <Link key={link.path} href={link.path}>
@@ -111,10 +125,24 @@ export function Navbar() {
                     </span>
                   </Link>
                 ))}
+
+                {/* Connect Us mobile */}
+                <Link href="/connect">
+                  <motion.span
+                    whileTap={{ scale: 0.93, y: 2 }}
+                    className={`cursor-pointer text-xl font-bold tracking-widest uppercase inline-block px-5 py-2 rounded-2xl border transition-all duration-200
+                      ${location === "/connect"
+                        ? "bg-primary/20 border-primary text-primary shadow-[0_0_18px_rgba(0,255,136,0.6)] text-glow"
+                        : "bg-primary/10 border-primary/60 text-primary hover:bg-primary/20 hover:border-primary hover:shadow-[0_0_18px_rgba(0,255,136,0.5)] shadow-[0_2px_8px_rgba(0,255,136,0.15)]"
+                      }`}
+                  >
+                    Connect Us
+                  </motion.span>
+                </Link>
               </nav>
 
               <div className="mt-auto">
-                <img src={logo} alt="INOMADIC" className="h-8 w-auto opacity-50" />
+                <img src={logo} alt="INOMADIC" className="h-10 w-auto opacity-60" />
               </div>
             </motion.div>
           </>
