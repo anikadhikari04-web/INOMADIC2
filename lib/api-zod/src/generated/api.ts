@@ -14,3 +14,19 @@ import * as zod from "zod";
 export const HealthCheckResponse = zod.object({
   status: zod.string(),
 });
+
+/**
+ * Sends an email via Nodemailer from the contact form
+ * @summary Send contact message
+ */
+
+export const SendContactMessageBody = zod.object({
+  name: zod.string().min(1),
+  email: zod.string().email(),
+  message: zod.string().min(1),
+});
+
+export const SendContactMessageResponse = zod.object({
+  success: zod.boolean(),
+  message: zod.string(),
+});

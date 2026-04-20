@@ -5,24 +5,11 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
-export interface HealthStatus {
-  status: string;
-}
 
 export interface ContactMessage {
   /** @minLength 1 */
   name: string;
   email: string;
   /** @minLength 1 */
-  message: string;
-}
-
-export interface ContactResponse {
-  success: boolean;
-  message: string;
-}
-
-export interface ErrorResponse {
-  success: boolean;
   message: string;
 }

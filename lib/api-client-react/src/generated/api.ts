@@ -5,18 +5,26 @@
  * API specification
  * OpenAPI spec version: 0.1.0
  */
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import type {
+  MutationFunction,
   QueryFunction,
   QueryKey,
+  UseMutationOptions,
+  UseMutationResult,
   UseQueryOptions,
   UseQueryResult,
 } from "@tanstack/react-query";
 
-import type { HealthStatus } from "./api.schemas";
+import type {
+  ContactMessage,
+  ContactResponse,
+  ErrorResponse,
+  HealthStatus,
+} from "./api.schemas";
 
 import { customFetch } from "../custom-fetch";
-import type { ErrorType } from "../custom-fetch";
+import type { ErrorType, BodyType } from "../custom-fetch";
 
 type AwaitedInput<T> = PromiseLike<T> | T;
 
@@ -99,3 +107,90 @@ export function useHealthCheck<
 
   return { ...query, queryKey: queryOptions.queryKey };
 }
+
+/**
+ * Sends an email via Nodemailer from the contact form
+ * @summary Send contact message
+ */
+export const getSendContactMessageUrl = () => {
+  return `/api/contact`;
+};
+
+export const sendContactMessage = async (
+  contactMessage: ContactMessage,
+  options?: RequestInit,
+): Promise<ContactResponse> => {
+  return customFetch<ContactResponse>(getSendContactMessageUrl(), {
+    ...options,
+    method: "POST",
+    headers: { "Content-Type": "application/json", ...options?.headers },
+    body: JSON.stringify(contactMessage),
+  });
+};
+
+export const getSendContactMessageMutationOptions = <
+  TError = ErrorType<ErrorResponse>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof sendContactMessage>>,
+    TError,
+    { data: BodyType<ContactMessage> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof sendContactMessage>>,
+  TError,
+  { data: BodyType<ContactMessage> },
+  TContext
+> => {
+  const mutationKey = ["sendContactMessage"];
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation &&
+      "mutationKey" in options.mutation &&
+      options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof sendContactMessage>>,
+    { data: BodyType<ContactMessage> }
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return sendContactMessage(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type SendContactMessageMutationResult = NonNullable<
+  Awaited<ReturnType<typeof sendContactMessage>>
+>;
+export type SendContactMessageMutationBody = BodyType<ContactMessage>;
+export type SendContactMessageMutationError = ErrorType<ErrorResponse>;
+
+/**
+ * @summary Send contact message
+ */
+export const useSendContactMessage = <
+  TError = ErrorType<ErrorResponse>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof sendContactMessage>>,
+    TError,
+    { data: BodyType<ContactMessage> },
+    TContext
+  >;
+  request?: SecondParameter<typeof customFetch>;
+}): UseMutationResult<
+  Awaited<ReturnType<typeof sendContactMessage>>,
+  TError,
+  { data: BodyType<ContactMessage> },
+  TContext
+> => {
+  return useMutation(getSendContactMessageMutationOptions(options));
+};
