@@ -109,7 +109,7 @@ export function SendPortfolioModal({ open, onClose }: Props) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-xl overflow-y-auto"
           onClick={onClose}
         >
           <motion.div
@@ -118,52 +118,62 @@ export function SendPortfolioModal({ open, onClose }: Props) {
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-2xl my-8 bg-[#0a0a0a] border border-primary/20 rounded-3xl shadow-[0_0_60px_rgba(0,255,136,0.15)] overflow-hidden"
+            className="relative w-full max-w-md my-6 rounded-2xl overflow-hidden border border-white/15 shadow-[0_8px_40px_rgba(0,0,0,0.6),0_0_40px_rgba(0,255,136,0.12),inset_0_1px_0_rgba(255,255,255,0.12)]"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(20,20,20,0.75) 0%, rgba(10,10,10,0.85) 50%, rgba(15,25,20,0.8) 100%)",
+              backdropFilter: "blur(28px) saturate(180%)",
+              WebkitBackdropFilter: "blur(28px) saturate(180%)",
+            }}
           >
-            {/* Glow */}
-            <div className="absolute -top-20 -right-20 w-64 h-64 bg-primary/20 blur-[80px] rounded-full pointer-events-none" />
-            <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-primary/10 blur-[80px] rounded-full pointer-events-none" />
+            {/* Liquid glass highlights */}
+            <div className="pointer-events-none absolute inset-0 rounded-2xl overflow-hidden">
+              <div className="absolute -top-24 -right-16 w-56 h-56 bg-primary/25 blur-[70px] rounded-full" />
+              <div className="absolute -bottom-24 -left-16 w-56 h-56 bg-primary/15 blur-[70px] rounded-full" />
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+              <div className="absolute top-0 left-1/4 right-1/4 h-20 bg-gradient-to-b from-white/[0.08] to-transparent rounded-full blur-2xl" />
+            </div>
 
             {/* Close */}
             <button
               type="button"
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 h-10 w-10 rounded-full flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+              className="absolute top-3 right-3 z-10 h-8 w-8 rounded-full flex items-center justify-center text-gray-400 hover:text-white bg-white/5 hover:bg-white/15 backdrop-blur-md border border-white/10 transition-colors"
               aria-label="Close"
             >
-              <X size={20} />
+              <X size={16} />
             </button>
 
-            <div className="relative p-6 sm:p-8 md:p-10">
+            <div className="relative p-5 sm:p-6">
               {success ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="flex flex-col items-center justify-center py-16 text-center"
+                  className="flex flex-col items-center justify-center py-12 text-center"
                 >
-                  <div className="h-20 w-20 rounded-full bg-primary/20 flex items-center justify-center mb-6">
-                    <CheckCircle2 className="text-primary" size={48} />
+                  <div className="h-16 w-16 rounded-full bg-primary/20 flex items-center justify-center mb-4">
+                    <CheckCircle2 className="text-primary" size={36} />
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Portfolio Sent!</h3>
-                  <p className="text-gray-400">We'll review it and get back to you soon.</p>
+                  <h3 className="text-xl font-bold text-white mb-1">Portfolio Sent!</h3>
+                  <p className="text-gray-400 text-sm">We'll review it and get back soon.</p>
                 </motion.div>
               ) : (
                 <>
-                  <div className="mb-6">
-                    <p className="text-xs text-primary tracking-widest uppercase mb-2">Submit</p>
-                    <h2 className="text-2xl sm:text-3xl font-black text-white">
+                  <div className="mb-4">
+                    <p className="text-[10px] text-primary tracking-widest uppercase mb-1">Submit</p>
+                    <h2 className="text-xl sm:text-2xl font-black text-white">
                       Send Your <span className="text-primary text-glow">Portfolio</span>
                     </h2>
-                    <p className="text-gray-500 text-sm mt-2">
-                      Share your work with us — message + link or files required.
+                    <p className="text-gray-500 text-xs mt-1">
+                      Message + link or files required.
                     </p>
                   </div>
 
-                  <form onSubmit={handleSubmit} className="space-y-5">
+                  <form onSubmit={handleSubmit} className="space-y-3">
                     {/* Required name + email */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       <div>
-                        <label className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-2 block">
+                        <label className="text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-1 block">
                           Name <span className="text-primary">*</span>
                         </label>
                         <input
@@ -172,11 +182,11 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                           onChange={(e) => setName(e.target.value)}
                           placeholder="Your name"
                           required
-                          className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder:text-gray-600 focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm transition"
+                          className="w-full px-3 py-2 bg-white/[0.05] backdrop-blur-md border border-white/15 rounded-lg text-white placeholder:text-gray-600 focus:border-primary/60 focus:outline-none focus:ring-1 focus:ring-primary/30 focus:bg-white/[0.08] text-xs transition shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
                         />
                       </div>
                       <div>
-                        <label className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-2 block">
+                        <label className="text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-1 block">
                           Email <span className="text-primary">*</span>
                         </label>
                         <input
@@ -185,58 +195,58 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="you@example.com"
                           required
-                          className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder:text-gray-600 focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm transition"
+                          className="w-full px-3 py-2 bg-white/[0.05] backdrop-blur-md border border-white/15 rounded-lg text-white placeholder:text-gray-600 focus:border-primary/60 focus:outline-none focus:ring-1 focus:ring-primary/30 focus:bg-white/[0.08] text-xs transition shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
                         />
                       </div>
                     </div>
 
                     {/* Message - REQUIRED */}
                     <div>
-                      <div className="flex justify-between items-center mb-2">
-                        <label className="text-xs font-bold tracking-widest uppercase text-gray-400">
+                      <div className="flex justify-between items-center mb-1">
+                        <label className="text-[10px] font-bold tracking-widest uppercase text-gray-400">
                           Message <span className="text-primary">*</span>
                         </label>
                         <span
-                          className={`text-xs font-mono ${
+                          className={`text-[10px] font-mono ${
                             wordCount > MAX_WORDS ? "text-red-400" : wordCount > 0 ? "text-primary" : "text-gray-600"
                           }`}
                         >
-                          {wordCount}/{MAX_WORDS} words
+                          {wordCount}/{MAX_WORDS}
                         </span>
                       </div>
                       <textarea
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
-                        placeholder="Tell us about yourself and what you're sharing..."
-                        rows={4}
-                        className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder:text-gray-600 focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm resize-none transition"
+                        placeholder="Tell us about yourself..."
+                        rows={3}
+                        className="w-full px-3 py-2 bg-white/[0.05] backdrop-blur-md border border-white/15 rounded-lg text-white placeholder:text-gray-600 focus:border-primary/60 focus:outline-none focus:ring-1 focus:ring-primary/30 focus:bg-white/[0.08] text-xs resize-none transition shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
                       />
                       {wordCount > MAX_WORDS && (
-                        <p className="text-red-400 text-xs mt-1">Maximum {MAX_WORDS} words allowed.</p>
+                        <p className="text-red-400 text-[10px] mt-1">Maximum {MAX_WORDS} words allowed.</p>
                       )}
                     </div>
 
                     {/* Portfolio link */}
                     <div>
-                      <label className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-2 block">
+                      <label className="text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-1 block">
                         Portfolio Link
                       </label>
                       <div className="relative">
-                        <Link2 size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
+                        <Link2 size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
                         <input
                           type="url"
                           value={link}
                           onChange={(e) => setLink(e.target.value)}
                           placeholder="https://your-portfolio.com"
-                          className="w-full pl-11 pr-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder:text-gray-600 focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm transition"
+                          className="w-full pl-9 pr-3 py-2 bg-white/[0.05] backdrop-blur-md border border-white/15 rounded-lg text-white placeholder:text-gray-600 focus:border-primary/60 focus:outline-none focus:ring-1 focus:ring-primary/30 focus:bg-white/[0.08] text-xs transition shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
                         />
                       </div>
                     </div>
 
                     {/* File upload */}
                     <div>
-                      <label className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-2 block">
-                        Upload Files <span className="text-gray-600 normal-case font-normal tracking-normal">(max 15 MB each)</span>
+                      <label className="text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-1 block">
+                        Upload Files <span className="text-gray-600 normal-case font-normal tracking-normal">(max 15 MB)</span>
                       </label>
                       <input
                         ref={fileInputRef}
@@ -248,24 +258,24 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                       <button
                         type="button"
                         onClick={() => fileInputRef.current?.click()}
-                        className="w-full flex flex-col items-center justify-center gap-2 px-4 py-6 bg-white/[0.02] border border-dashed border-white/15 rounded-xl text-gray-400 hover:border-primary/50 hover:text-primary hover:bg-primary/5 transition-all"
+                        className="w-full flex flex-col items-center justify-center gap-1 px-3 py-3 bg-white/[0.04] backdrop-blur-md border border-dashed border-white/20 rounded-lg text-gray-400 hover:border-primary/60 hover:text-primary hover:bg-primary/5 transition-all shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
                       >
-                        <Upload size={20} />
-                        <span className="text-sm font-medium">Click to choose files</span>
-                        <span className="text-xs text-gray-600">Images, videos, PDFs, ZIPs</span>
+                        <Upload size={16} />
+                        <span className="text-xs font-medium">Choose files</span>
+                        <span className="text-[10px] text-gray-600">Images, videos, PDFs, ZIPs</span>
                       </button>
 
                       {files.length > 0 && (
-                        <div className="mt-3 space-y-2">
+                        <div className="mt-2 space-y-1.5">
                           {files.map((f, i) => (
                             <div
                               key={i}
-                              className="flex items-center gap-3 px-3 py-2 bg-white/[0.03] border border-white/10 rounded-lg"
+                              className="flex items-center gap-2 px-2.5 py-1.5 bg-white/[0.05] backdrop-blur-md border border-white/15 rounded-md"
                             >
-                              <FileText size={16} className="text-primary shrink-0" />
+                              <FileText size={13} className="text-primary shrink-0" />
                               <div className="flex-1 min-w-0">
-                                <p className="text-xs text-white truncate">{f.name}</p>
-                                <p className="text-[10px] text-gray-500">{(f.size / 1024).toFixed(1)} KB</p>
+                                <p className="text-[11px] text-white truncate">{f.name}</p>
+                                <p className="text-[9px] text-gray-500">{(f.size / 1024).toFixed(1)} KB</p>
                               </div>
                               <button
                                 type="button"
@@ -273,7 +283,7 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                                 className="text-gray-500 hover:text-red-400 transition-colors p-1"
                                 aria-label="Remove file"
                               >
-                                <Trash2 size={14} />
+                                <Trash2 size={12} />
                               </button>
                             </div>
                           ))}
@@ -282,14 +292,14 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                     </div>
 
                     {error && (
-                      <div className="px-4 py-3 bg-red-500/10 border border-red-500/30 rounded-xl text-red-300 text-xs">
+                      <div className="px-3 py-2 bg-red-500/10 backdrop-blur-md border border-red-500/30 rounded-lg text-red-300 text-[11px]">
                         {error}
                       </div>
                     )}
 
                     {/* Hint */}
                     {!canSend && !submitting && (
-                      <p className="text-[11px] text-gray-600 text-center">
+                      <p className="text-[10px] text-gray-600 text-center">
                         {!nameValid
                           ? "Please enter your name."
                           : !emailValid
@@ -305,20 +315,20 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                       type="submit"
                       disabled={!canSend}
                       whileTap={canSend ? { scale: 0.97 } : undefined}
-                      className={`w-full flex items-center justify-center gap-2 px-6 py-4 rounded-2xl font-bold text-sm tracking-wider uppercase transition-all ${
+                      className={`w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-bold text-xs tracking-wider uppercase transition-all ${
                         canSend
-                          ? "bg-primary text-black hover:shadow-[0_0_30px_rgba(0,255,136,0.5)] cursor-pointer"
-                          : "bg-white/5 text-gray-600 cursor-not-allowed border border-white/10"
+                          ? "bg-primary/90 text-black hover:bg-primary hover:shadow-[0_0_24px_rgba(0,255,136,0.5)] cursor-pointer backdrop-blur-md border border-primary/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.25)]"
+                          : "bg-white/5 text-gray-600 cursor-not-allowed border border-white/10 backdrop-blur-md"
                       }`}
                     >
                       {submitting ? (
                         <>
-                          <Loader2 size={18} className="animate-spin" />
+                          <Loader2 size={14} className="animate-spin" />
                           Sending...
                         </>
                       ) : (
                         <>
-                          <Send size={16} />
+                          <Send size={13} />
                           Send Portfolio
                         </>
                       )}
