@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { SendPortfolioModal } from "@/components/forms/SendPortfolioModal";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -8,6 +10,7 @@ const fadeInUp = {
 };
 
 export default function Contact() {
+  const [portfolioOpen, setPortfolioOpen] = useState(false);
   return (
     <div className="flex flex-col w-full bg-black min-h-[90vh]">
       {/* Header */}
@@ -88,9 +91,13 @@ export default function Contact() {
                 <div className="absolute -right-10 -top-10 w-40 h-40 bg-primary/20 blur-[50px] rounded-full"></div>
                 <h3 className="text-white font-bold mb-2 relative z-10">Looking for careers?</h3>
                 <p className="text-gray-400 text-sm mb-4 relative z-10">We are always on the lookout for talented artists.</p>
-                <a href="mailto:innomadic.official@gmail.com?subject=Careers" className="text-primary hover:text-white transition-colors text-sm font-bold tracking-wider uppercase relative z-10 inline-flex items-center gap-2">
+                <button
+                  type="button"
+                  onClick={() => setPortfolioOpen(true)}
+                  className="text-primary hover:text-white transition-colors text-sm font-bold tracking-wider uppercase relative z-10 inline-flex items-center gap-2 cursor-pointer"
+                >
                   Send Portfolio
-                </a>
+                </button>
               </div>
             </motion.div>
 
@@ -102,6 +109,8 @@ export default function Contact() {
           </div>
         </div>
       </section>
+
+      <SendPortfolioModal open={portfolioOpen} onClose={() => setPortfolioOpen(false)} />
     </div>
   );
 }
