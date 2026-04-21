@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <div className="flex flex-col w-full overflow-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-start justify-center -mt-20 pt-44 md:pt-52 pb-20">
+      <section className="relative min-h-[90vh] flex items-center justify-center -mt-20 pt-20">
         <div className="absolute inset-0 z-0">
           <img 
             src={heroImg1} 

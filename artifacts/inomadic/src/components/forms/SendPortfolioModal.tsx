@@ -29,7 +29,9 @@ export function SendPortfolioModal({ open, onClose }: Props) {
   const wordCount = message.trim() === "" ? 0 : message.trim().split(/\s+/).length;
   const messageValid = wordCount >= 1 && wordCount <= MAX_WORDS;
   const hasLinkOrFile = link.trim().length > 0 || files.length > 0;
-  const canSend = messageValid && hasLinkOrFile && !submitting;
+  const nameValid = name.trim().length > 0;
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+  const canSend = messageValid && hasLinkOrFile && nameValid && emailValid && !submitting;
 
   useEffect(() => {
     if (open) {
@@ -158,22 +160,34 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-5">
-                    {/* Optional name + email */}
+                    {/* Required name + email */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <input
-                        type="text"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        placeholder="Your name (optional)"
-                        className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder:text-gray-600 focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm transition"
-                      />
-                      <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Your email (optional)"
-                        className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder:text-gray-600 focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm transition"
-                      />
+                      <div>
+                        <label className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-2 block">
+                          Name <span className="text-primary">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          placeholder="Your name"
+                          required
+                          className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder:text-gray-600 focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm transition"
+                        />
+                      </div>
+                      <div>
+                        <label className="text-xs font-bold tracking-widest uppercase text-gray-400 mb-2 block">
+                          Email <span className="text-primary">*</span>
+                        </label>
+                        <input
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="you@example.com"
+                          required
+                          className="w-full px-4 py-3 bg-white/[0.03] border border-white/10 rounded-xl text-white placeholder:text-gray-600 focus:border-primary/50 focus:outline-none focus:ring-2 focus:ring-primary/20 text-sm transition"
+                        />
+                      </div>
                     </div>
 
                     {/* Message - REQUIRED */}
@@ -276,7 +290,11 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                     {/* Hint */}
                     {!canSend && !submitting && (
                       <p className="text-[11px] text-gray-600 text-center">
-                        {!messageValid
+                        {!nameValid
+                          ? "Please enter your name."
+                          : !emailValid
+                          ? "Please enter a valid email."
+                          : !messageValid
                           ? "Add a message (1–300 words) to continue."
                           : "Add a portfolio link or upload at least one file to unlock Send."}
                       </p>
