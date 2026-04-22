@@ -147,7 +147,7 @@ export default function OurWorks() {
       {/* Ending Statement */}
       <section className="py-40 relative flex items-center justify-center text-center overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 pointer-events-none"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-full bg-primary/10 blur-[100px] rounded-full"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-full bg-primary/10 blur-[60px] md:blur-[100px] rounded-full"></div>
         
         <div className="container mx-auto px-6 relative z-10">
           <motion.div

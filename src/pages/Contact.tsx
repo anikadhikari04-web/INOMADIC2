@@ -49,7 +49,7 @@ export default function Contact() {
                 
                 <div className="space-y-8">
                   <div className="flex items-start gap-6 group">
-                    <div className="h-14 w-14 rounded-full glass-panel backdrop-blur-md bg-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-colors shrink-0">
+                    <div className="h-14 w-14 rounded-full glass-panel bg-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-black transition-colors shrink-0">
                       <Mail size={24} />
                     </div>
                     <div>
@@ -87,8 +87,8 @@ export default function Contact() {
                 </div>
               </div>
               
-              <div className="p-8 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] relative overflow-hidden will-change-transform">
-                <div className="absolute -right-10 -top-10 w-40 h-40 bg-primary/20 blur-[50px] rounded-full pointer-events-none"></div>
+              <div className="p-8 rounded-3xl bg-white/5 border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] relative overflow-hidden">
+                <div className="absolute -right-10 -top-10 w-40 h-40 bg-primary/20 blur-[30px] md:blur-[50px] rounded-full pointer-events-none"></div>
                 <h3 className="text-white font-bold mb-2 relative z-10">Looking for careers?</h3>
                 <p className="text-gray-400 text-sm mb-4 relative z-10">We are always on the lookout for talented artists.</p>
                 <button

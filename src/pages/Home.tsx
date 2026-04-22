@@ -28,18 +28,19 @@ export default function Home() {
             src={heroImg1}
             alt="Cinematic Studio"
             className="w-full h-full object-cover opacity-25"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/80 to-black"></div>
         </div>
 
-        {/* Ambient glow blobs - Switched to static layers with CSS animation for low-end device optimization */}
+        {/* Ambient glow blobs — reduced blur on mobile via smaller sizes */}
         <div
           aria-hidden
-          className="absolute top-1/4 -right-32 w-[28rem] h-[28rem] bg-primary/20 blur-[100px] rounded-full pointer-events-none will-change-transform animate-pulse"
+          className="absolute top-1/4 -right-32 w-[16rem] h-[16rem] md:w-[28rem] md:h-[28rem] bg-primary/20 blur-[60px] md:blur-[100px] rounded-full pointer-events-none"
         />
         <div
           aria-hidden
-          className="absolute bottom-0 -left-32 w-[24rem] h-[24rem] bg-primary/10 blur-[100px] rounded-full pointer-events-none will-change-transform animate-pulse"
+          className="absolute bottom-0 -left-32 w-[14rem] h-[14rem] md:w-[24rem] md:h-[24rem] bg-primary/10 blur-[50px] md:blur-[100px] rounded-full pointer-events-none"
         />
 
         <div className="container relative z-10 mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
@@ -48,10 +49,10 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, ease: "easeOut" }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
               className="mb-6 inline-block"
             >
-              <span className="px-4 py-1.5 rounded-full border border-primary/40 text-primary text-[10px] sm:text-xs font-bold tracking-widest uppercase bg-primary/5 backdrop-blur-md shadow-[0_0_20px_rgba(0,255,136,0.25)]">
+              <span className="px-4 py-1.5 rounded-full border border-primary/40 text-primary text-[10px] sm:text-xs font-bold tracking-widest uppercase bg-primary/5 shadow-[0_0_20px_rgba(0,255,136,0.25)]">
                 Visual Storytelling Agency
               </span>
             </motion.div>
@@ -59,7 +60,7 @@ export default function Home() {
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[1.05] tracking-tighter mb-6"
             >
               We Don't Just Create.
@@ -72,7 +73,7 @@ export default function Home() {
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
               className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mb-10 font-light leading-relaxed"
             >
               Crafting brand films, motion graphics & immersive digital experiences that operate at the intersection of art and technology.
@@ -81,26 +82,18 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
               className="flex flex-col sm:flex-row gap-4 sm:gap-5 w-full sm:w-auto"
             >
               <Link href="/our-works">
-                <motion.span
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.96 }}
-                  className="px-7 py-3.5 bg-primary text-black font-bold rounded-2xl flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(0,255,136,0.45)] hover:shadow-[0_0_50px_rgba(0,255,136,0.7)] transition-shadow cursor-pointer text-sm sm:text-base"
-                >
+                <span className="px-7 py-3.5 bg-primary text-black font-bold rounded-2xl flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(0,255,136,0.45)] hover:shadow-[0_0_50px_rgba(0,255,136,0.7)] transition-shadow cursor-pointer text-sm sm:text-base active:scale-95 transition-transform">
                   Explore Our Work <ArrowRight size={18} />
-                </motion.span>
+                </span>
               </Link>
               <Link href="/contact">
-                <motion.span
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.96 }}
-                  className="px-7 py-3.5 bg-white/[0.04] backdrop-blur-md border border-primary/40 text-white font-bold rounded-2xl flex items-center justify-center hover:border-primary hover:bg-primary/5 hover:shadow-[0_0_25px_rgba(0,255,136,0.4)] transition-all cursor-pointer text-sm sm:text-base"
-                >
+                <span className="px-7 py-3.5 bg-white/[0.04] border border-primary/40 text-white font-bold rounded-2xl flex items-center justify-center hover:border-primary hover:bg-primary/5 hover:shadow-[0_0_25px_rgba(0,255,136,0.4)] transition-all cursor-pointer text-sm sm:text-base active:scale-95">
                   Get in Touch
-                </motion.span>
+                </span>
               </Link>
             </motion.div>
           </div>
@@ -108,58 +101,54 @@ export default function Home() {
           {/* Ring Logo Column */}
           <div className="lg:col-span-5 flex items-center justify-center relative order-first lg:order-last mb-4 lg:mb-0">
             <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[26rem] lg:h-[26rem] flex items-center justify-center">
-              {/* Pulsing aura behind ring - Optimized for 120Hz */}
+              {/* Pulsing aura behind ring — reduced on mobile */}
               <div
                 aria-hidden
-                className="absolute inset-0 m-auto w-[80%] h-[80%] bg-primary/30 blur-[80px] rounded-full pointer-events-none will-change-transform animate-pulse"
+                className="absolute inset-0 m-auto w-[80%] h-[80%] bg-primary/30 blur-[40px] md:blur-[80px] rounded-full pointer-events-none animate-pulse"
               />
               <div
                 aria-hidden
-                className="absolute inset-0 m-auto w-[110%] h-[110%] bg-primary/15 blur-[100px] rounded-full pointer-events-none opacity-80 will-change-transform animate-pulse"
+                className="absolute inset-0 m-auto w-[110%] h-[110%] bg-primary/15 blur-[50px] md:blur-[100px] rounded-full pointer-events-none opacity-80 animate-pulse"
               />
 
-              {/* Floating + slow rotating ring */}
+              {/* Floating ring logo — simplified animation */}
               <motion.img
                 src={ringLogo}
                 alt="INOMADIC"
-                initial={{ opacity: 0, scale: 0.7, rotate: -15 }}
+                initial={{ opacity: 0, scale: 0.7 }}
                 animate={{
                   opacity: 1,
                   scale: 1,
-                  rotate: 0,
-                  y: [0, -12, 0],
+                  y: [0, -10, 0],
                 }}
                 transition={{
-                  opacity: { duration: 1, ease: "easeOut" },
-                  scale: { duration: 1, ease: "easeOut" },
-                  rotate: { duration: 1, ease: "easeOut" },
-                  y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+                  opacity: { duration: 0.8, ease: "easeOut" },
+                  scale: { duration: 0.8, ease: "easeOut" },
+                  y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
                 }}
                 className="relative z-10 w-full h-full object-contain drop-shadow-[0_0_40px_rgba(0,255,136,0.7)]"
               />
 
-              {/* Slow rotating sparkle ring */}
-              <motion.div
+              {/* Slow rotating sparkle rings — CSS animation for GPU compositing */}
+              <div
                 aria-hidden
-                animate={{ rotate: 360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 m-auto w-[95%] h-[95%] rounded-full border border-primary/15"
+                className="absolute inset-0 m-auto w-[95%] h-[95%] rounded-full border border-primary/15 hidden md:block"
+                style={{ animation: "spin 30s linear infinite" }}
               />
-              <motion.div
+              <div
                 aria-hidden
-                animate={{ rotate: -360 }}
-                transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
-                className="absolute inset-0 m-auto w-[105%] h-[105%] rounded-full border border-primary/10"
+                className="absolute inset-0 m-auto w-[105%] h-[105%] rounded-full border border-primary/10 hidden md:block"
+                style={{ animation: "spin 45s linear infinite reverse" }}
               />
             </div>
           </div>
         </div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator — hidden on mobile */}
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500 flex-col items-center gap-2"
+          className="hidden lg:flex absolute bottom-8 left-1/2 -translate-x-1/2 text-gray-500 flex-col items-center gap-2"
         >
           <span className="text-[10px] uppercase tracking-widest font-bold">Scroll</span>
           <div className="w-[1px] h-10 bg-gradient-to-b from-primary/60 to-transparent"></div>
@@ -167,14 +156,14 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-32 relative bg-black">
+      <section className="py-20 md:py-32 relative bg-black">
         <div className="container mx-auto px-6 md:px-12">
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-100px" }}
             variants={fadeInUp}
-            className="mb-20 md:mb-32 flex flex-col md:flex-row md:items-end justify-between gap-8"
+            className="mb-16 md:mb-32 flex flex-col md:flex-row md:items-end justify-between gap-8"
           >
             <div>
               <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
@@ -208,9 +197,9 @@ export default function Home() {
               <motion.div 
                 key={i}
                 variants={fadeInUp}
-                className="glass-panel p-8 rounded-3xl glow-border group hover:-translate-y-2 transition-all duration-500 backdrop-blur-xl bg-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] border border-white/10 will-change-transform"
+                className="glass-panel p-8 rounded-3xl glow-border group md:hover:-translate-y-2 transition-transform duration-500 bg-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] border border-white/10"
               >
-                <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-black transition-colors duration-500 will-change-transform">
+                <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-black transition-colors duration-500">
                   <service.icon size={28} />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-4">{service.title}</h3>
@@ -224,7 +213,7 @@ export default function Home() {
       </section>
 
       {/* Showreel/Video Teaser Section */}
-      <section className="py-32 relative overflow-hidden">
+      <section className="py-20 md:py-32 relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/5"></div>
         <div className="container mx-auto px-6 md:px-12 relative z-10 text-center">
           <motion.div
@@ -238,7 +227,7 @@ export default function Home() {
               Ready to create something <span className="text-glow text-primary italic">unforgettable?</span>
             </h2>
             <Link href="/connect">
-              <span className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-black font-black text-lg rounded-full hover:bg-primary hover:shadow-[0_0_40px_rgba(0,255,136,0.6)] transition-all cursor-pointer scale-95 hover:scale-100">
+              <span className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-black font-black text-lg rounded-full hover:bg-primary hover:shadow-[0_0_40px_rgba(0,255,136,0.6)] transition-all cursor-pointer active:scale-95">
                 Start a Project
               </span>
             </Link>

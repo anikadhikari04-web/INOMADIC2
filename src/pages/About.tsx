@@ -53,7 +53,7 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUp}
-              className="glass-panel p-8 md:p-10 rounded-3xl glow-border relative overflow-hidden backdrop-blur-xl bg-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] will-change-transform"
+              className="glass-panel p-8 md:p-10 rounded-3xl glow-border relative overflow-hidden bg-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
             >
               <div className="absolute top-0 right-0 p-8 text-primary/20">
                 <span className="text-8xl font-serif">"</span>
@@ -72,7 +72,7 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUp}
-              className="glass-panel p-8 md:p-10 rounded-3xl glow-border relative overflow-hidden backdrop-blur-xl bg-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] will-change-transform"
+              className="glass-panel p-8 md:p-10 rounded-3xl glow-border relative overflow-hidden bg-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
             >
               <div className="absolute top-0 right-0 p-8 text-primary/20">
                 <span className="text-8xl font-serif">"</span>
@@ -108,7 +108,7 @@ export default function About() {
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
-            className="text-4xl lg:text-5xl font-bold text-white mb-16 text-center will-change-transform"
+            className="text-4xl lg:text-5xl font-bold text-white mb-16 text-center"
           >
             Core <span className="text-primary">Values</span>
           </motion.h2>
@@ -118,13 +118,13 @@ export default function About() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 will-change-transform"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
           >
             {["Creativity", "Quality", "Innovation", "Passion"].map((value, i) => (
               <motion.div
                 key={value}
                 variants={fadeInUp}
-                className="backdrop-blur-xl bg-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] border border-white/10 rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 text-center hover:bg-white/10 hover:border-primary/50 transition-all cursor-default will-change-transform hover:shadow-[0_0_20px_rgba(0,255,136,0.15)]"
+                className="bg-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] border border-white/10 rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 text-center hover:bg-white/10 hover:border-primary/50 transition-all cursor-default hover:shadow-[0_0_20px_rgba(0,255,136,0.15)]"
               >
                 <span className="text-primary font-mono text-xs sm:text-sm mb-3 sm:mb-4 block">0{i + 1}</span>
                 <h3 className="text-sm sm:text-base md:text-xl font-bold text-white break-words">{value}</h3>
