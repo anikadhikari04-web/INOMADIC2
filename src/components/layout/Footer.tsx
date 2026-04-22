@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { SiBehance, SiInstagram, SiFacebook, SiX, SiYoutube } from "react-icons/si";
 import { FaLinkedinIn } from "react-icons/fa";
-import logo from "@assets/icon_1776665343507.png";
+import logo from "@/assets/icon_1776665343507.png";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();

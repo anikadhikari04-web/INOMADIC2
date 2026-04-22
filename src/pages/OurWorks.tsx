@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import portImg1 from "@assets/Untitletrws654fyg6yti87hujkuok9iklod_1776766606514.png";
-import portImg2 from "@assets/Untitletcedv67uyurbtghjud_1776766606515.png";
-import portImg3 from "@assets/Untse2wrt43w4ete2witled_1776766606516.png";
-import portImg4 from "@assets/Undghfjfttyjugtjtitled_1776766606517.png";
-import portImg5 from "@assets/Untiiteyi57485itled_1776766606518.png";
-import portImg6 from "@assets/Unt6yu98i0o9-pitled_1776766606519.png";
-import portImg7 from "@assets/Untyt6re85eitled_1776766606520.png";
-import portImg8 from "@assets/Untitled_1776766606521.png";
+import portImg1 from "@/assets/Untitletrws654fyg6yti87hujkuok9iklod_1776766606514.png";
+import portImg2 from "@/assets/Untitletcedv67uyurbtghjud_1776766606515.png";
+import portImg3 from "@/assets/Untse2wrt43w4ete2witled_1776766606516.png";
+import portImg4 from "@/assets/Undghfjfttyjugtjtitled_1776766606517.png";
+import portImg5 from "@/assets/Untiiteyi57485itled_1776766606518.png";
+import portImg6 from "@/assets/Unt6yu98i0o9-pitled_1776766606519.png";
+import portImg7 from "@/assets/Untyt6re85eitled_1776766606520.png";
+import portImg8 from "@/assets/Untitled_1776766606521.png";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },

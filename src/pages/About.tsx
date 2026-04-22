@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import uttamImg from "@assets/Unteu6rej6yutitled_1776767797329.png";
-import subhankarImg from "@assets/Unti0-9iiyyiouiutled_1776767797328.png";
-import arnabImg from "@assets/Untittreu65ei76led_1776767797328.png";
-import soumyaImg from "@assets/Unghfireie67rr78oritled_1776767797327.png";
-import suryaImg from "@assets/Untidutreur54htrde5tled_1776767797326.png";
-import pragyaImg from "@assets/Untitl7oit07t0ed_1776767797323.png";
+import uttamImg from "@/assets/Unteu6rej6yutitled_1776767797329.png";
+import subhankarImg from "@/assets/Unti0-9iiyyiouiutled_1776767797328.png";
+import arnabImg from "@/assets/Untittreu65ei76led_1776767797328.png";
+import soumyaImg from "@/assets/Unghfireie67rr78oritled_1776767797327.png";
+import suryaImg from "@/assets/Untidutreur54htrde5tled_1776767797326.png";
+import pragyaImg from "@/assets/Untitl7oit07t0ed_1776767797323.png";
 import heroImg2 from "@/assets/images/hero-2.png";
 
 const fadeInUp = {

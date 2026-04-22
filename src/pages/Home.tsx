@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { ArrowRight, Play, Camera, Film, Sparkles } from "lucide-react";
 import heroImg1 from "@/assets/images/hero-1.png";
-import ringLogo from "@assets/kogo_1-Photoroom_1776768884920.png";
+import ringLogo from "@/assets/kogo_1-Photoroom_1776768884920.png";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
