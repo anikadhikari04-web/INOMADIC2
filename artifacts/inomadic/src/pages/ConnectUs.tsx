@@ -5,8 +5,8 @@ import { ContactForm } from "@/components/forms/ContactForm";
 import { useToast } from "@/hooks/use-toast";
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } }
 };
 
 export default function ConnectUs() {
@@ -93,9 +93,9 @@ export default function ConnectUs() {
               variants={fadeInUp}
               className="flex flex-col"
             >
-              <div className="glass-panel glow-border p-8 md:p-12 rounded-3xl h-full flex flex-col relative overflow-hidden">
+              <div className="glass-panel glow-border p-8 md:p-12 rounded-3xl h-full flex flex-col relative overflow-hidden bg-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]">
                 {/* Status indicator ring in background */}
-                <div className={`absolute -right-20 -top-20 w-64 h-64 blur-[80px] rounded-full pointer-events-none transition-colors duration-1000 ${isAvailable ? 'bg-primary/20' : 'bg-destructive/20'}`}></div>
+                <div className={`absolute -right-20 -top-20 w-64 h-64 blur-[40px] md:blur-[80px] rounded-full pointer-events-none transition-colors duration-700 ${isAvailable ? 'bg-primary/20' : 'bg-destructive/20'}`}></div>
                 
                 <div className="flex items-center gap-3 mb-8 relative z-10">
                   <PhoneCall className="text-white" size={28} />

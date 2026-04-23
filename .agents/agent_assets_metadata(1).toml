@@ -1,0 +1,62 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "8gLOGm2OMpo9QDVe8Gzgz"
+uri = "file://artifacts/inomadic/src/assets/images/hero-1.png"
+type = "image"
+title = "Hero background cinematic studio"
+
+[[generated]]
+id = "3OmhrNkcUxm-PqU6aHy5V"
+uri = "file://artifacts/inomadic/src/assets/images/hero-2.png"
+type = "image"
+title = "Hero background abstract graphics"
+
+[[generated]]
+id = "nqQeQjeYi3jln3aYYUrI0"
+uri = "file://artifacts/inomadic/src/assets/images/team-1.png"
+type = "image"
+title = "Team member creative director"
+
+[[generated]]
+id = "m5pPuiNWsQbRAlwfqEvqQ"
+uri = "file://artifacts/inomadic/src/assets/images/team-2.png"
+type = "image"
+title = "Team member cinematographer"
+
+[[generated]]
+id = "AIQIeJtVIIMsSXGww20xk"
+uri = "file://artifacts/inomadic/src/assets/images/team-3.png"
+type = "image"
+title = "Team member motion artist"
+
+[[generated]]
+id = "QaDjJKBYEmZL2yMd8LYEF"
+uri = "file://artifacts/inomadic/src/assets/images/portfolio-1.png"
+type = "image"
+title = "Portfolio luxury car"
+
+[[generated]]
+id = "PS_wRRW96nnXVnNq3kM5p"
+uri = "file://artifacts/inomadic/src/assets/images/portfolio-2.png"
+type = "image"
+title = "Portfolio film set"
+
+[[generated]]
+id = "48n8WaQEgrC9mw0CoxSxy"
+uri = "file://artifacts/inomadic/src/assets/images/portfolio-3.png"
+type = "image"
+title = "Portfolio abstract motion"
+
+[[generated]]
+id = "hywaDICisRI3kMFGrbOi9"
+uri = "file://artifacts/inomadic/src/assets/images/portfolio-4.png"
+type = "image"
+title = "Portfolio fashion editorial"
+
+[[generated]]
+id = "XleUHl2hNbx_1rCbeMKc7"
+uri = "file://artifacts/inomadic/src/assets/images/portfolio-5.png"
+type = "image"
+title = "Portfolio cyberpunk city"

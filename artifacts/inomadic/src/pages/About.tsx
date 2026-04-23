@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import uttamImg from "@assets/Unteu6rej6yutitled_1776767797329.png";
-import subhankarImg from "@assets/Unti0-9iiyyiouiutled_1776767797328.png";
-import arnabImg from "@assets/Untittreu65ei76led_1776767797328.png";
-import soumyaImg from "@assets/Unghfireie67rr78oritled_1776767797327.png";
-import suryaImg from "@assets/Untidutreur54htrde5tled_1776767797326.png";
-import pragyaImg from "@assets/Untitl7oit07t0ed_1776767797323.png";
+import uttamImg from "@/assets/Unteu6rej6yutitled_1776767797329.png";
+import subhankarImg from "@/assets/Unti0-9iiyyiouiutled_1776767797328.png";
+import arnabImg from "@/assets/Untittreu65ei76led_1776767797328.png";
+import soumyaImg from "@/assets/Unghfireie67rr78oritled_1776767797327.png";
+import suryaImg from "@/assets/Untidutreur54htrde5tled_1776767797326.png";
+import pragyaImg from "@/assets/Untitl7oit07t0ed_1776767797323.png";
 import heroImg2 from "@/assets/images/hero-2.png";
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } }
 };
 
 const staggerContainer = {
@@ -28,7 +28,7 @@ export default function About() {
       <section className="pt-24 pb-16 px-6 md:px-12 bg-black relative border-b border-white/5">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/10 to-transparent blur-3xl rounded-full opacity-50 pointer-events-none"></div>
         <div className="container mx-auto">
-          <motion.div 
+          <motion.div
             initial="hidden"
             animate="visible"
             variants={fadeInUp}
@@ -48,40 +48,40 @@ export default function About() {
       <section className="py-24 relative">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
-            <motion.div 
+            <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUp}
-              className="glass-panel p-10 rounded-3xl glow-border relative overflow-hidden"
+              className="glass-panel p-8 md:p-10 rounded-3xl glow-border relative overflow-hidden bg-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
             >
               <div className="absolute top-0 right-0 p-8 text-primary/20">
                 <span className="text-8xl font-serif">"</span>
               </div>
               <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-6">Our Mission</h2>
-              <p className="text-2xl lg:text-3xl text-white font-medium leading-tight mb-8 relative z-10">
+              <p className="text-xl sm:text-2xl lg:text-3xl text-white font-medium leading-tight mb-8 relative z-10">
                 To create visuals that move people — emotionally and physically.
               </p>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-gray-400 leading-relaxed text-sm md:text-base">
                 We exist to bridge the gap between a brand's identity and its audience's imagination. Every frame we craft is engineered to spark a reaction and leave a lasting impression.
               </p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeInUp}
-              className="glass-panel p-10 rounded-3xl glow-border relative overflow-hidden"
+              className="glass-panel p-8 md:p-10 rounded-3xl glow-border relative overflow-hidden bg-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
             >
               <div className="absolute top-0 right-0 p-8 text-primary/20">
                 <span className="text-8xl font-serif">"</span>
               </div>
               <h2 className="text-sm font-bold tracking-widest text-primary uppercase mb-6">Our Vision</h2>
-              <p className="text-2xl lg:text-3xl text-white font-medium leading-tight mb-8 relative z-10">
+              <p className="text-xl sm:text-2xl lg:text-3xl text-white font-medium leading-tight mb-8 relative z-10">
                 To be the most sought-after creative storytelling studio in India.
               </p>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-gray-400 leading-relaxed text-sm md:text-base">
                 Known not just for what we create, but for how we make people feel. We aim to set the benchmark for cinematic quality in the digital space.
               </p>
             </motion.div>
@@ -91,42 +91,43 @@ export default function About() {
 
       {/* Full Width Image Break */}
       <section className="w-full h-[60vh] relative">
-        <img 
-          src={heroImg2} 
-          alt="Creative process" 
+        <img
+          src={heroImg2}
+          alt="Creative process"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/40"></div>
       </section>
 
       {/* Values */}
-      <section className="py-24 bg-black">
-        <div className="container mx-auto px-6 md:px-12">
-          <motion.h2 
+      <section className="py-24 bg-black relative">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent pointer-events-none"></div>
+        <div className="container mx-auto px-6 md:px-12 relative z-10">
+          <motion.h2
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
-            className="text-4xl font-bold text-white mb-16 text-center"
+            className="text-4xl lg:text-5xl font-bold text-white mb-16 text-center"
           >
-            Core Core <span className="text-primary">Values</span>
+            Core <span className="text-primary">Values</span>
           </motion.h2>
-          
-          <motion.div 
+
+          <motion.div
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6"
           >
             {["Creativity", "Quality", "Innovation", "Passion"].map((value, i) => (
-              <motion.div 
+              <motion.div
                 key={value}
                 variants={fadeInUp}
-                className="bg-white/5 border border-white/10 rounded-3xl p-8 text-center hover:bg-white/10 hover:border-primary/50 transition-all cursor-default"
+                className="bg-white/5 shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)] border border-white/10 rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 text-center hover:bg-white/10 hover:border-primary/50 transition-all cursor-default hover:shadow-[0_0_20px_rgba(0,255,136,0.15)]"
               >
-                <span className="text-primary font-mono text-sm mb-4 block">0{i+1}</span>
-                <h3 className="text-xl font-bold text-white">{value}</h3>
+                <span className="text-primary font-mono text-xs sm:text-sm mb-3 sm:mb-4 block">0{i + 1}</span>
+                <h3 className="text-sm sm:text-base md:text-xl font-bold text-white break-words">{value}</h3>
               </motion.div>
             ))}
           </motion.div>
@@ -137,7 +138,7 @@ export default function About() {
       <section className="py-24 relative overflow-hidden">
         <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none"></div>
         <div className="container mx-auto px-6 md:px-12 relative z-10">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}

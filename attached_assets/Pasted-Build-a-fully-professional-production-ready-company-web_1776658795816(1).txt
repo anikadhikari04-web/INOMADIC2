@@ -1,0 +1,189 @@
+Build a fully professional, production-ready company website for a brand named "INOMADIC".
+
+IMPORTANT:
+- I will upload a PDF containing company information. Extract ALL usable content from that PDF and distribute it properly across pages (DO NOT include any Google Drive links from the PDF).
+- I will also upload the INOMADIC logo. Place it in the top-right corner of the navbar.
+- You may also use images from my Google Drive if needed, and extract images from the PDF.
+
+-----------------------------------
+ASSETS (IMPORTANT)
+-----------------------------------
+
+Google Drive Folder (Use for images and videos when needed):
+https://drive.google.com/drive/folders/1uKoq4EMjGXaBjZlNcJAIbxp35bKpamKi?usp=sharing
+
+Rules:
+- Use images and videos from this drive when appropriate
+- You may also extract images from the uploaded PDF
+- DO NOT include or display this Google Drive link anywhere on the website
+- For videos: ensure they are embedded properly (not broken links)
+
+-----------------------------------
+TECH STACK REQUIREMENTS
+-----------------------------------
+Frontend:
+- React (Vite)
+- Tailwind CSS
+- Framer Motion (for animations)
+
+Backend:
+- Node.js + Express
+- Nodemailer (for email system)
+
+Other:
+- Fully responsive design (mobile-first)
+- Optimized performance (lazy loading, clean structure)
+- Smooth transitions (no laggy animations)
+
+-----------------------------------
+GLOBAL DESIGN SYSTEM
+-----------------------------------
+Theme Colors:
+- Black (primary background)
+- Sharp Green (#00ff88 style glow)
+- Dark Green
+- Light Green
+- Brown (subtle accents)
+
+UI Effects:
+- Glassmorphism navbar (liquid glass effect)
+- Glow effects on buttons (green glow on hover + click)
+- Smooth page transitions
+- Scroll-based animations (light, not excessive)
+- Floating action button (subtle, modern)
+- Rounded corners everywhere (modern UI)
+
+-----------------------------------
+NAVBAR BEHAVIOR
+-----------------------------------
+- Logo on RIGHT side
+- Menu items on LEFT side
+- On mobile: sidebar opens from LEFT with smooth animation
+- Hover effect: glowing highlight
+- Click effect: subtle pulse animation
+- Each page loads from TOP (scroll reset)
+
+-----------------------------------
+PAGES STRUCTURE
+-----------------------------------
+
+1. HOME PAGE
+- Hero section (title, tagline from PDF, CTA button)
+- Animated sections (fade/slide)
+- Professional layout with images + text
+- Smooth scrolling
+- Call-to-action buttons
+
+-----------------------------------
+
+2. ABOUT PAGE
+- Fully generated from PDF content
+- Include:
+  - Company description
+  - Mission / Vision
+  - Team members (if available in PDF)
+- Use cards for team members
+- Include images
+
+-----------------------------------
+
+3. OUR WORKS PAGE
+Structure:
+- Intro description
+- Image gallery (from PDF or Drive)
+- VIDEO SECTION:
+  - 3 videos (from Google Drive)
+  - Rounded corners
+  - Green glowing shadow behind videos
+- Additional images
+- Ending section:
+  - Title + 2 short lines (clean branding statement)
+
+-----------------------------------
+
+4. CONTACT PAGE (Name it professionally, e.g., "Get in Touch")
+This page must include a WORKING backend system.
+
+FORM:
+- Name
+- Email
+- Message
+- Submit button
+
+FUNCTIONALITY:
+- When user submits:
+  - Send email to: innomadic.official@gmail.com
+  - Use user's email as sender
+  - Include user's name + message
+- Use Nodemailer backend
+- No page reload
+
+FEEDBACK:
+- Success → Green popup
+- Error → Red popup
+
+-----------------------------------
+
+5. CONNECT US PAGE
+Two sections:
+
+SECTION 1: CALL SYSTEM
+- Show status:
+   IF time is between 10:00 AM – 08:00 PM IST:
+      → "Calling Available" (green)
+   ELSE:
+      → "Unavailable Now" (red)
+
+- Button: "Call Now"
+   IF available:
+      → opens phone dialer (tel:+919046684054)
+   ELSE:
+      → show error popup
+
+- UI:
+   - Rounded box
+   - Glassmorphism effect
+   - Green glowing edges
+
+SECTION 2: MESSAGE SYSTEM
+- Same form + backend as Contact Page
+- Inside another rounded glowing box
+
+-----------------------------------
+SOCIAL MEDIA LINKS (FOOTER OR SECTION)
+-----------------------------------
+Add icons + links:
+
+- LinkedIn: https://www.linkedin.com/company/inomadic/?originalSubdomain=in
+- Behance: https://www.behance.net/innomadic
+- Instagram: https://www.instagram.com/_inomadic_
+- Facebook: https://www.facebook.com/INomadic2020/
+- X (Twitter): https://x.com/i_nomadic
+- YouTube : https://www.youtube.com/@inomadicofficial2701
+
+-----------------------------------
+ADVANCED UX DETAILS
+-----------------------------------
+- Smooth hover transitions everywhere
+- Button glow animations
+- Cursor interaction effects
+- Page transitions (fade/slide)
+- Scroll-triggered animations (Framer Motion)
+- No lag, no jitter
+
+-----------------------------------
+OPTIMIZATION RULES
+-----------------------------------
+- Clean file structure
+- Reusable components
+- Lazy load images/videos
+- Mobile-first responsive design
+- Works on all screen sizes
+
+-----------------------------------
+DELIVERABLE
+-----------------------------------
+- Full working project (frontend + backend)
+- No placeholder logic — everything must work
+- Clean, professional code
+- No broken links or missing features

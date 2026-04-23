@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import { Link } from "wouter";
-import portImg1 from "@assets/Untitletrws654fyg6yti87hujkuok9iklod_1776766606514.png";
-import portImg2 from "@assets/Untitletcedv67uyurbtghjud_1776766606515.png";
-import portImg3 from "@assets/Untse2wrt43w4ete2witled_1776766606516.png";
-import portImg4 from "@assets/Undghfjfttyjugtjtitled_1776766606517.png";
-import portImg5 from "@assets/Untiiteyi57485itled_1776766606518.png";
-import portImg6 from "@assets/Unt6yu98i0o9-pitled_1776766606519.png";
-import portImg7 from "@assets/Untyt6re85eitled_1776766606520.png";
-import portImg8 from "@assets/Untitled_1776766606521.png";
+import portImg1 from "@/assets/Untitletrws654fyg6yti87hujkuok9iklod_1776766606514.png";
+import portImg2 from "@/assets/Untitletcedv67uyurbtghjud_1776766606515.png";
+import portImg3 from "@/assets/Untse2wrt43w4ete2witled_1776766606516.png";
+import portImg4 from "@/assets/Undghfjfttyjugtjtitled_1776766606517.png";
+import portImg5 from "@/assets/Untiiteyi57485itled_1776766606518.png";
+import portImg6 from "@/assets/Unt6yu98i0o9-pitled_1776766606519.png";
+import portImg7 from "@/assets/Untyt6re85eitled_1776766606520.png";
+import portImg8 from "@/assets/Untitled_1776766606521.png";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 40 },
@@ -35,9 +35,9 @@ export default function OurWorks() {
   ];
 
   const videos = [
-    { id: "dQw4w9WgXcQ", title: "Brand Anthem 2024" },
-    { id: "jNQXAC9IVRw", title: "Me at the zoo - Remastered" },
-    { id: "M7lc1UVf-VE", title: "YouTube Creators Showcase" }
+    { id: "qCHyJekX6CA", title: "Agency Reel: Our Works & Clients" },
+    { id: "q-lXgEudoYU", title: "Vaccination Awareness Campaign" },
+    { id: "EWtmz3CiPVc", title: "Indian Constitution: Unknown Facts" }
   ];
 
   return (
@@ -85,7 +85,7 @@ export default function OurWorks() {
                 transition={{ duration: 0.6, delay: i * 0.2 }}
                 className="flex flex-col"
               >
-                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-[0_0_20px_rgba(0,255,136,0.15)] border border-primary/20 hover:border-primary/60 transition-colors duration-500 bg-black/50">
+                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(0,255,136,0.25)] border border-primary/20 hover:border-primary/60 transition-colors duration-500 bg-black/50">
                   <iframe
                     className="absolute inset-0 w-full h-full"
                     src={`https://www.youtube.com/embed/${vid.id}?rel=0&modestbranding=1`}
@@ -147,7 +147,7 @@ export default function OurWorks() {
       {/* Ending Statement */}
       <section className="py-40 relative flex items-center justify-center text-center overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 pointer-events-none"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-full bg-primary/10 blur-[100px] rounded-full"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-full bg-primary/15 blur-[80px] md:blur-[120px] rounded-full"></div>
         
         <div className="container mx-auto px-6 relative z-10">
           <motion.div

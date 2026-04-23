@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { motion } from "framer-motion";
 import { Loader2, Send } from "lucide-react";
-import { useSendContactMessage } from "@workspace/api-client-react";
+import { supabase } from "@/lib/supabase";
 import { useToast } from "@/hooks/use-toast";
 
 const contactSchema = z.object({
@@ -17,7 +17,7 @@ type ContactFormValues = z.infer<typeof contactSchema>;
 
 export function ContactForm() {
   const { toast } = useToast();
-  const sendMessage = useSendContactMessage();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -30,13 +30,29 @@ export function ContactForm() {
 
   const onSubmit = async (data: ContactFormValues) => {
     try {
-      await sendMessage.mutateAsync({
-        data: {
-          name: data.name,
-          email: data.email,
-          message: data.message
+      setIsSubmitting(true);
+      const { error } = await supabase.from('contacts').insert([
+        { 
+          name: data.name, 
+          email: data.email, 
+          message: data.message 
         }
+      ]);
+      
+      if (error) {
+        console.error("Database Error:", error);
+      }
+
+      // Automatically trigger the new email transmission backend
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
       });
+
+      if (!res.ok) {
+        throw new Error('Email backend failed to send');
+      }
       
       toast({
         title: "Message Sent",
@@ -47,11 +63,14 @@ export function ContactForm() {
       
       form.reset();
     } catch (error) {
+      console.error("Supabase Error:", error);
       toast({
         title: "Error",
         description: "Failed to send message. Please try again or email us directly.",
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -114,10 +133,10 @@ export function ContactForm() {
 
         <button
           type="submit"
-          disabled={sendMessage.isPending}
+          disabled={isSubmitting}
           className="w-full bg-primary text-black font-bold py-4 rounded-xl hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(0,255,136,0.4)] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
         >
-          {sendMessage.isPending ? (
+          {isSubmitting ? (
             <Loader2 className="animate-spin" size={20} />
           ) : (
             <>
