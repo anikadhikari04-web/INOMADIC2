@@ -146,7 +146,7 @@
    Glass Panel — Desktop: full blur, Mobile: solid bg (GPU-friendly)
    ============================ */
 .glass-panel {
-  @apply bg-black/60 border border-white/5 shadow-[0_0_15px_rgba(0,255,136,0.05)];
+  @apply bg-black/60 border border-white/5 shadow-[0_0_25px_rgba(0,255,136,0.1)];
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
@@ -182,7 +182,7 @@
 }
 
 .text-glow {
-  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+  text-shadow: 0 0 20px rgba(0, 255, 136, 0.8), 0 0 40px rgba(0, 255, 136, 0.3);
 }
 
 /* ============================

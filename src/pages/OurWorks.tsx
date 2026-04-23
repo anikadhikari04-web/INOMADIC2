@@ -35,9 +35,9 @@ export default function OurWorks() {
   ];
 
   const videos = [
-    { id: "dQw4w9WgXcQ", title: "Brand Anthem 2024" },
-    { id: "jNQXAC9IVRw", title: "Me at the zoo - Remastered" },
-    { id: "M7lc1UVf-VE", title: "YouTube Creators Showcase" }
+    { id: "q-lXgEudoYU", title: "Vaccination Awareness Campaign" },
+    { id: "qCHyJekX6CA", title: "Agency Reel: Our Works & Clients" },
+    { id: "EWtmz3CiPVc", title: "Indian Constitution: Unknown Facts" }
   ];
 
   return (
@@ -85,7 +85,7 @@ export default function OurWorks() {
                 transition={{ duration: 0.6, delay: i * 0.2 }}
                 className="flex flex-col"
               >
-                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-[0_0_20px_rgba(0,255,136,0.15)] border border-primary/20 hover:border-primary/60 transition-colors duration-500 bg-black/50">
+                <div className="relative aspect-video rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,255,136,0.35)] border border-primary/20 hover:border-primary/60 transition-colors duration-500 bg-black/50">
                   <iframe
                     className="absolute inset-0 w-full h-full"
                     src={`https://www.youtube.com/embed/${vid.id}?rel=0&modestbranding=1`}
@@ -147,7 +147,7 @@ export default function OurWorks() {
       {/* Ending Statement */}
       <section className="py-40 relative flex items-center justify-center text-center overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 pointer-events-none"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-full bg-primary/10 blur-[60px] md:blur-[100px] rounded-full"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg h-full bg-primary/25 blur-[100px] md:blur-[150px] rounded-full"></div>
         
         <div className="container mx-auto px-6 relative z-10">
           <motion.div
