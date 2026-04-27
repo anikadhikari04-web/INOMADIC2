@@ -29,33 +29,26 @@ export function ContactForm() {
   });
 
   const onSubmit = async (data: ContactFormValues) => {
+    const { name, email, message } = data;
+    
     try {
       setIsSubmitting(true);
-      const { error } = await supabase.from('contacts').insert([
-        { 
-          name: data.name, 
-          email: data.email, 
-          message: data.message 
-        }
-      ]);
       
-      if (error) {
-        console.error("Database Error:", error);
-      }
-
-      // Send POST request to /api/sendEmail
-      const res = await fetch('/api/sendEmail', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      // Send POST request targeting the new endpoint
+      const res = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          message: data.message
+          name: name,
+          email: email,
+          message: message
         })
       });
 
       if (!res.ok) {
-        throw new Error('Email backend failed to send');
+        throw new Error("Failed to send message");
       }
       
       toast({
@@ -67,7 +60,7 @@ export function ContactForm() {
       
       form.reset();
     } catch (error) {
-      console.error("Submission Error:", error);
+      console.error(error);
       toast({
         title: "Error",
         description: "Failed to send message",

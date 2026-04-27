@@ -5,7 +5,6 @@ export default async function handler(req, res) {
 
   const { name, email, message } = req.body;
 
-  // Validation
   if (!name || !email || !message) {
     return res.status(400).json({ error: "All fields are required" });
   }
@@ -20,7 +19,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         sender: {
           email: "innomadic.official@gmail.com",
-          name: "Website Contact"
+          name: "INOMADIC Website"
         },
         to: [
           {
@@ -31,18 +30,12 @@ export default async function handler(req, res) {
           email: email,
           name: name
         },
-        subject: "New Contact Form Message",
-        textContent: `
-Name: ${name}
-Email: ${email}
-Message: ${message}
-        `
+        subject: "New Contact Message",
+        textContent: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
       })
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
-      console.error("Brevo API Error:", errorData);
       throw new Error("Brevo API failed");
     }
 
