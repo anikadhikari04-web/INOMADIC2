@@ -43,11 +43,15 @@ export function ContactForm() {
         console.error("Database Error:", error);
       }
 
-      // Automatically trigger the new email transmission backend
-      const res = await fetch('/api/contact', {
+      // Send POST request to /api/sendEmail
+      const res = await fetch('/api/sendEmail', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          message: data.message
+        })
       });
 
       if (!res.ok) {
@@ -55,18 +59,18 @@ export function ContactForm() {
       }
       
       toast({
-        title: "Message Sent",
-        description: "We've received your message and will get back to you soon.",
+        title: "Success",
+        description: "Message sent successfully",
         variant: "default",
         className: "border-primary bg-black text-white",
       });
       
       form.reset();
     } catch (error) {
-      console.error("Supabase Error:", error);
+      console.error("Submission Error:", error);
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again or email us directly.",
+        description: "Failed to send message",
         variant: "destructive",
       });
     } finally {
