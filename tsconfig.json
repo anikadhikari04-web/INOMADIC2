@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "extends": "./tsconfig.base.json",
   "compileOnSave": false,
   "files": [],
@@ -13,4 +14,27 @@
       "path": "./lib/api-zod"
     }
   ]
+=======
+  "compilerOptions": {
+    "target": "es2022",
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "skipLibCheck": true,
+    "types": ["node", "vite/client"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build", "dist", "**/*.test.ts"]
+>>>>>>> e721b21265b7eabf2027cd947ffcf79bbfb016f2
 }
