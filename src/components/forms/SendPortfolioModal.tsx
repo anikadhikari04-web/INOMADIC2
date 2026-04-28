@@ -1,37 +1,28 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Link2, Upload, Send, FileText, Trash2, Loader2, CheckCircle2 } from "lucide-react";
+import { X, Link2, Send, Loader2, CheckCircle2 } from "lucide-react";
 
 interface Props {
   open: boolean;
   onClose: () => void;
 }
 
-const MAX_FILE_SIZE = 15 * 1024 * 1024;
 const MAX_WORDS = 300;
-
-function getApiUrl() {
-  const base = import.meta.env.BASE_URL || "/";
-  return `${base.replace(/\/$/, "")}/api/portfolio`;
-}
 
 export function SendPortfolioModal({ open, onClose }: Props) {
   const [message, setMessage] = useState("");
   const [link, setLink] = useState("");
-  const [files, setFiles] = useState<File[]>([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const wordCount = message.trim() === "" ? 0 : message.trim().split(/\s+/).length;
   const messageValid = wordCount >= 1 && wordCount <= MAX_WORDS;
-  const hasLinkOrFile = link.trim().length > 0 || files.length > 0;
   const nameValid = name.trim().length > 0;
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-  const canSend = messageValid && hasLinkOrFile && nameValid && emailValid && !submitting;
+  const canSend = messageValid && nameValid && emailValid && !submitting;
 
   useEffect(() => {
     if (open) {
@@ -49,7 +40,6 @@ export function SendPortfolioModal({ open, onClose }: Props) {
       setTimeout(() => {
         setMessage("");
         setLink("");
-        setFiles([]);
         setName("");
         setEmail("");
         setSuccess(false);
@@ -59,39 +49,31 @@ export function SendPortfolioModal({ open, onClose }: Props) {
     }
   }, [open]);
 
-  const handleFileSelect = (selected: FileList | null) => {
-    if (!selected) return;
-    const arr = Array.from(selected);
-    const tooBig = arr.find((f) => f.size > MAX_FILE_SIZE);
-    if (tooBig) {
-      setError(`"${tooBig.name}" exceeds 15 MB limit.`);
-      return;
-    }
-    setError(null);
-    setFiles((prev) => [...prev, ...arr].slice(0, 10));
-  };
-
-  const removeFile = (idx: number) => {
-    setFiles((prev) => prev.filter((_, i) => i !== idx));
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!canSend) return;
     setSubmitting(true);
     setError(null);
     try {
-      const fd = new FormData();
-      fd.append("message", message);
-      fd.append("portfolioLink", link);
-      fd.append("name", name);
-      fd.append("email", email);
-      files.forEach((f) => fd.append("files", f));
-      const res = await fetch(getApiUrl(), { method: "POST", body: fd });
-      const data = await res.json();
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || "Failed to send portfolio.");
+      // Build the message body, appending portfolio link if provided
+      let fullMessage = message;
+      if (link.trim()) {
+        fullMessage += `\n\nPortfolio: ${link.trim()}`;
       }
+
+      // Reuse the same /api/sendEmail endpoint as the Contact form
+      const res = await fetch("/api/sendEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message: fullMessage }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to send portfolio.");
+      }
+
       setSuccess(true);
       setTimeout(() => onClose(), 2000);
     } catch (err) {
@@ -165,7 +147,7 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                       Send Your <span className="text-primary text-glow">Portfolio</span>
                     </h2>
                     <p className="text-gray-500 text-xs mt-1">
-                      Message + link or files required.
+                      Tell us about yourself and share your portfolio link.
                     </p>
                   </div>
 
@@ -243,54 +225,6 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                       </div>
                     </div>
 
-                    {/* File upload */}
-                    <div>
-                      <label className="text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-1 block">
-                        Upload Files <span className="text-gray-600 normal-case font-normal tracking-normal">(max 15 MB)</span>
-                      </label>
-                      <input
-                        ref={fileInputRef}
-                        type="file"
-                        multiple
-                        onChange={(e) => handleFileSelect(e.target.files)}
-                        className="hidden"
-                      />
-                      <button
-                        type="button"
-                        onClick={() => fileInputRef.current?.click()}
-                        className="w-full flex flex-col items-center justify-center gap-1 px-3 py-3 bg-white/[0.04] backdrop-blur-md border border-dashed border-white/20 rounded-lg text-gray-400 hover:border-primary/60 hover:text-primary hover:bg-primary/5 transition-all shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
-                      >
-                        <Upload size={16} />
-                        <span className="text-xs font-medium">Choose files</span>
-                        <span className="text-[10px] text-gray-600">Images, videos, PDFs, ZIPs</span>
-                      </button>
-
-                      {files.length > 0 && (
-                        <div className="mt-2 space-y-1.5">
-                          {files.map((f, i) => (
-                            <div
-                              key={i}
-                              className="flex items-center gap-2 px-2.5 py-1.5 bg-white/[0.05] backdrop-blur-md border border-white/15 rounded-md"
-                            >
-                              <FileText size={13} className="text-primary shrink-0" />
-                              <div className="flex-1 min-w-0">
-                                <p className="text-[11px] text-white truncate">{f.name}</p>
-                                <p className="text-[9px] text-gray-500">{(f.size / 1024).toFixed(1)} KB</p>
-                              </div>
-                              <button
-                                type="button"
-                                onClick={() => removeFile(i)}
-                                className="text-gray-500 hover:text-red-400 transition-colors p-1"
-                                aria-label="Remove file"
-                              >
-                                <Trash2 size={12} />
-                              </button>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
                     {error && (
                       <div className="px-3 py-2 bg-red-500/10 backdrop-blur-md border border-red-500/30 rounded-lg text-red-300 text-[11px]">
                         {error}
@@ -304,9 +238,7 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                           ? "Please enter your name."
                           : !emailValid
                           ? "Please enter a valid email."
-                          : !messageValid
-                          ? "Add a message (1–300 words) to continue."
-                          : "Add a portfolio link or upload at least one file to unlock Send."}
+                          : "Add a message (1–300 words) to continue."}
                       </p>
                     )}
 
