@@ -1,30 +1,14 @@
 {
-<<<<<<< HEAD
-  "extends": "./tsconfig.base.json",
-  "compileOnSave": false,
-  "files": [],
-  "references": [
-    {
-      "path": "./lib/db"
-    },
-    {
-      "path": "./lib/api-client-react"
-    },
-    {
-      "path": "./lib/api-zod"
-    }
-  ]
-=======
   "compilerOptions": {
-    "target": "es2022",
-    "lib": ["esnext", "dom", "dom.iterable"],
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "target": "ES2022",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
@@ -34,7 +18,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "build", "dist", "**/*.test.ts"]
->>>>>>> e721b21265b7eabf2027cd947ffcf79bbfb016f2
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }
