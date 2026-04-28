@@ -65,7 +65,7 @@ export function SendPortfolioModal({ open, onClose }: Props) {
       const res = await fetch("/api/sendEmail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message: fullMessage }),
+        body: JSON.stringify({ name, email, message: fullMessage, portfolio: link.trim() || null, type: "portfolio" }),
       });
 
       const data = await res.json();
