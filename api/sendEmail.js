@@ -1,11 +1,9 @@
-import { saveToSupabase } from "./lib/saveToSupabase.js";
-
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { name, email, message, portfolio, type } = req.body;
+  const { name, email, message } = req.body;
 
   if (!name || !email || !message) {
     return res.status(400).json({ error: "All fields are required" });
@@ -19,25 +17,7 @@ export default async function handler(req, res) {
 
   try {
     // =========================
-    // 1️⃣ SAVE TO SUPABASE (must succeed before sending email)
-    // =========================
-    const dbResult = await saveToSupabase({
-      name,
-      email,
-      message,
-      portfolio: portfolio || null,
-      type: type || "contact",
-    });
-
-    if (!dbResult.success) {
-      console.error("Supabase save failed:", dbResult.error);
-      return res.status(500).json({
-        error: "Failed to save message. Please try again.",
-      });
-    }
-
-    // =========================
-    // 2️⃣ SEND EMAIL TO YOU
+    // 1️⃣ SEND EMAIL TO YOU
     // =========================
     const adminResponse = await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
@@ -72,7 +52,7 @@ export default async function handler(req, res) {
     }
 
     // =========================
-    // 3️⃣ SEND AUTO-REPLY
+    // 2️⃣ SEND AUTO-REPLY
     // =========================
     const userResponse = await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
