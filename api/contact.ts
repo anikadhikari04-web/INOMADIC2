@@ -10,8 +10,8 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    // USER EMAIL
-    const userRes = await fetch("https://api.brevo.com/v3/smtp/email", {
+    // Send confirmation to USER
+    await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,16 +32,8 @@ export default async function handler(req: any, res: any) {
       }),
     });
 
-    const userData = await userRes.json();
-
-    console.log("User email response:", userData);
-
-    if (!userRes.ok) {
-      throw new Error("User email failed");
-    }
-
-    // ADMIN EMAIL
-    const adminRes = await fetch("https://api.brevo.com/v3/smtp/email", {
+    // Send notification to ADMIN
+    await fetch("https://api.brevo.com/v3/smtp/email", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -62,17 +54,8 @@ export default async function handler(req: any, res: any) {
       }),
     });
 
-    const adminData = await adminRes.json();
-
-    console.log("Admin email response:", adminData);
-
-    if (!adminRes.ok) {
-      throw new Error("Admin email failed");
-    }
-
     return res.status(200).json({ success: true });
-  } catch (err: any) {
-    console.error("FULL ERROR:", err);
-    return res.status(500).json({ error: "Email failed", details: err.message });
+  } catch (err) {
+    return res.status(500).json({ error: "Email failed" });
   }
 }
