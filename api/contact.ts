@@ -1,61 +1,50 @@
-export default async function handler(req: any, res: any) {
-  if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method not allowed" });
-  }
+import { Resend } from 'resend';
 
-  const { name, email, message } = req.body;
+export const config = {
+  runtime: 'edge',
+};
 
-  if (!name || !email || !message) {
-    return res.status(400).json({ error: "Missing fields" });
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+export default async function handler(req: Request) {
+  if (req.method !== 'POST') {
+    return new Response('Method Not Allowed', { status: 405 });
   }
 
   try {
-    // Send confirmation to USER
-    await fetch("https://api.brevo.com/v3/smtp/email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "api-key": process.env.BREVO_API_KEY as string,
-      },
-      body: JSON.stringify({
-        to: [{ email }],
-        templateId: 1,
-        params: { name, message },
-        sender: {
-          email: "inomadic.official@gmail.com",
-          name: "INOMADIC",
-        },
-        replyTo: {
-          email,
-          name,
-        },
-      }),
+    const { name, email, message } = await req.json();
+
+    if (!name || !email || !message) {
+      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    // This uses the default Resend testing email 'onboarding@resend.dev'
+    // It will deliver directly to innomadic.official@gmail.com
+    const { data, error } = await resend.emails.send({
+      from: 'INOMADIC Studio <onboarding@resend.dev>', 
+      to: ['innomadic.official@gmail.com'],
+      subject: `New Project Inquiry from ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
     });
 
-    // Send notification to ADMIN
-    await fetch("https://api.brevo.com/v3/smtp/email", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "api-key": process.env.BREVO_API_KEY as string,
-      },
-      body: JSON.stringify({
-        to: [{ email: "inomadic.official@gmail.com" }],
-        templateId: 2,
-        params: { name, email, message },
-        sender: {
-          email: "inomadic.official@gmail.com",
-          name: "Website Bot",
-        },
-        replyTo: {
-          email,
-          name,
-        },
-      }),
-    });
+    if (error) {
+      return new Response(JSON.stringify({ error }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
 
-    return res.status(200).json({ success: true });
-  } catch (err) {
-    return res.status(500).json({ error: "Email failed" });
+    return new Response(JSON.stringify({ success: true, data }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: 'Internal Server Error' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }
