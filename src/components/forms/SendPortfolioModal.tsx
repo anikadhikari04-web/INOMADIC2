@@ -20,9 +20,10 @@ export function SendPortfolioModal({ open, onClose }: Props) {
 
   const wordCount = message.trim() === "" ? 0 : message.trim().split(/\s+/).length;
   const messageValid = wordCount >= 1 && wordCount <= MAX_WORDS;
+  const linkValid = link.trim().length > 0;
   const nameValid = name.trim().length > 0;
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-  const canSend = messageValid && nameValid && emailValid && !submitting;
+  const canSend = messageValid && linkValid && nameValid && emailValid && !submitting;
 
   useEffect(() => {
     if (open) {
@@ -211,7 +212,7 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                     {/* Portfolio link */}
                     <div>
                       <label className="text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-1 block">
-                        Portfolio Link
+                        Portfolio Link <span className="text-primary">*</span>
                       </label>
                       <div className="relative">
                         <Link2 size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
@@ -238,7 +239,9 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                           ? "Please enter your name."
                           : !emailValid
                           ? "Please enter a valid email."
-                          : "Add a message (1–300 words) to continue."}
+                          : !messageValid
+                          ? "Add a message (1–300 words) to continue."
+                          : "Add a portfolio link to unlock Send."}
                       </p>
                     )}
 

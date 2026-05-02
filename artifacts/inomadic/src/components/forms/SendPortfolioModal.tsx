@@ -28,10 +28,10 @@ export function SendPortfolioModal({ open, onClose }: Props) {
 
   const wordCount = message.trim() === "" ? 0 : message.trim().split(/\s+/).length;
   const messageValid = wordCount >= 1 && wordCount <= MAX_WORDS;
-  const hasLinkOrFile = link.trim().length > 0 || files.length > 0;
+  const linkValid = link.trim().length > 0;
   const nameValid = name.trim().length > 0;
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-  const canSend = messageValid && hasLinkOrFile && nameValid && emailValid && !submitting;
+  const canSend = messageValid && linkValid && nameValid && emailValid && !submitting;
 
   useEffect(() => {
     if (open) {
@@ -165,7 +165,7 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                       Send Your <span className="text-primary text-glow">Portfolio</span>
                     </h2>
                     <p className="text-gray-500 text-xs mt-1">
-                      Message + link or files required.
+                      Message + link required.
                     </p>
                   </div>
 
@@ -229,7 +229,7 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                     {/* Portfolio link */}
                     <div>
                       <label className="text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-1 block">
-                        Portfolio Link
+                        Portfolio Link <span className="text-primary">*</span>
                       </label>
                       <div className="relative">
                         <Link2 size={13} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
@@ -306,7 +306,7 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                           ? "Please enter a valid email."
                           : !messageValid
                           ? "Add a message (1–300 words) to continue."
-                          : "Add a portfolio link or upload at least one file to unlock Send."}
+                          : "Add a portfolio link to unlock Send."}
                       </p>
                     )}
 

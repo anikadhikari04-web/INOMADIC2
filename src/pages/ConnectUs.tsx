@@ -99,7 +99,7 @@ export default function ConnectUs() {
                 
                 <div className="flex items-center gap-3 mb-8 relative z-10">
                   <PhoneCall className="text-white" size={28} />
-                  <h2 className="text-3xl font-bold text-white">Call System</h2>
+                  <h2 className="text-3xl font-bold text-white">Call Us</h2>
                 </div>
 
                 <div className="bg-black/50 border border-white/5 rounded-2xl p-6 mb-8 relative z-10">
