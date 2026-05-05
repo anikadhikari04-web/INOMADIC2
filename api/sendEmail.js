@@ -39,8 +39,12 @@ export default async function handler(req, res) {
           email: email,
           name: name,
         },
-        subject: "New Contact Message",
-        textContent: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+        templateId: 2,
+        params: {
+          name: name,
+          email: email,
+          message: message,
+        },
       }),
     });
 
@@ -71,16 +75,12 @@ export default async function handler(req, res) {
             name: name,
           },
         ],
-        subject: "We received your message",
-        htmlContent: `
-          <h2>Thank you for contacting us, ${name}!</h2>
-          <p>We have received your message and will respond as soon as possible.</p>
-          <br/>
-          <p><b>Your message:</b></p>
-          <p>${message}</p>
-          <br/>
-          <p>– INOMADIC Team</p>
-        `,
+        templateId: 1,
+        params: {
+          name: name,
+          email: email,
+          message: message,
+        },
       }),
     });
 
