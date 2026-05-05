@@ -268,6 +268,10 @@ export function SendPortfolioModal({ open, onClose }: Props) {
                         </>
                       )}
                     </motion.button>
+
+                    <p className="text-[11px] text-emerald-400 text-center mt-3">
+                      After sending the message you will get a confirmation mail in your given email address.
+                    </p>
                   </form>
                 </>
               )}

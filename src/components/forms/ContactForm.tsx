@@ -129,6 +129,10 @@ export function ContactForm() {
           )}
         </button>
 
+        <p className="text-sm text-emerald-400 text-center mt-4">
+          After sending the message you will get a confirmation mail in your given email address.
+        </p>
+
       </form>
     </motion.div>
   );
