@@ -74,7 +74,7 @@ export default function Home() {
             >
               We Don't Just Create.
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-green-300 to-primary text-glow inline-block">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-green-300 to-primary inline-block">
                 We Captivate.
               </span>
             </motion.h1>

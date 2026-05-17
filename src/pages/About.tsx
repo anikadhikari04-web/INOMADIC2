@@ -35,7 +35,7 @@ export default function About() {
             className="max-w-4xl"
           >
             <h1 className="text-5xl md:text-7xl font-black text-white mb-6">
-              The <span className="text-primary text-glow">INOMADIC</span> Story
+              The <span className="text-primary">INOMADIC</span> Story
             </h1>
             <p className="text-xl md:text-2xl text-gray-400 font-light leading-relaxed">
               Founded in 2020, we are a visual storytelling agency specializing in brand films, commercial photography, motion graphics, and digital content creation.
