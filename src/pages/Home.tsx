@@ -300,10 +300,13 @@ export default function Home() {
            CTA Section
            ════════════════════════════════════════════ */}
       <section className="py-28 md:py-40 relative overflow-hidden">
-        {/* Background glow orbs - Increased intensity */}
-        <div aria-hidden className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[32rem] md:w-[56rem] md:h-[56rem] bg-primary/[0.15] blur-[100px] md:blur-[180px] rounded-full pointer-events-none" />
-        <div aria-hidden className="absolute bottom-0 left-[10%] w-[20rem] h-[20rem] md:w-[28rem] md:h-[28rem] bg-primary/[0.12] blur-[80px] md:blur-[140px] rounded-full pointer-events-none" />
-        <div aria-hidden className="absolute top-[10%] right-[5%] w-[16rem] h-[16rem] md:w-[24rem] md:h-[24rem] bg-primary/[0.1] blur-[60px] md:blur-[120px] rounded-full pointer-events-none" />
+        {/* Top fade mask to blend seamlessly into black */}
+        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none" />
+
+        {/* Background glow orbs - Smoother blend */}
+        <div aria-hidden className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] md:w-[64rem] md:h-[64rem] bg-primary/[0.08] blur-[140px] md:blur-[240px] rounded-full pointer-events-none" />
+        <div aria-hidden className="absolute bottom-0 left-[10%] w-[24rem] h-[24rem] md:w-[36rem] md:h-[36rem] bg-primary/[0.06] blur-[100px] md:blur-[200px] rounded-full pointer-events-none" />
+        <div aria-hidden className="absolute top-[10%] right-[5%] w-[16rem] h-[16rem] md:w-[28rem] md:h-[28rem] bg-primary/[0.05] blur-[80px] md:blur-[160px] rounded-full pointer-events-none" />
 
         <div className="container mx-auto px-6 md:px-12 relative z-10 text-center">
           <motion.div
