@@ -230,3 +230,95 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary)/0.5);
 }
+
+/* ============================
+   Starfield — subtle floating dots (all pages)
+   Pure CSS, GPU-composited, zero JS overhead
+   ============================ */
+@keyframes starfield-drift-1 {
+  0%   { transform: translateY(0px) translateX(0px); }
+  50%  { transform: translateY(-30px) translateX(15px); }
+  100% { transform: translateY(0px) translateX(0px); }
+}
+
+@keyframes starfield-drift-2 {
+  0%   { transform: translateY(0px) translateX(0px); }
+  50%  { transform: translateY(20px) translateX(-20px); }
+  100% { transform: translateY(0px) translateX(0px); }
+}
+
+@keyframes starfield-twinkle {
+  0%, 100% { opacity: 0.5; }
+  50%      { opacity: 1; }
+}
+
+.starfield {
+  position: relative;
+}
+
+.starfield::before,
+.starfield::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+}
+
+/* Layer 1 — brighter, fewer dots */
+.starfield::before {
+  box-shadow:
+    80px 120px 0 0.5px rgba(0, 255, 136, 0.35),
+    250px 80px 0 0.3px rgba(255, 255, 255, 0.25),
+    420px 300px 0 0.5px rgba(0, 255, 136, 0.3),
+    600px 150px 0 0.4px rgba(255, 255, 255, 0.2),
+    150px 450px 0 0.5px rgba(0, 255, 136, 0.25),
+    780px 380px 0 0.3px rgba(255, 255, 255, 0.3),
+    950px 200px 0 0.5px rgba(0, 255, 136, 0.35),
+    1100px 450px 0 0.4px rgba(255, 255, 255, 0.2),
+    320px 600px 0 0.5px rgba(0, 255, 136, 0.3),
+    700px 550px 0 0.3px rgba(255, 255, 255, 0.25),
+    1250px 100px 0 0.5px rgba(0, 255, 136, 0.25),
+    50px 700px 0 0.4px rgba(255, 255, 255, 0.2),
+    500px 750px 0 0.5px rgba(0, 255, 136, 0.3),
+    900px 680px 0 0.3px rgba(255, 255, 255, 0.25),
+    1350px 350px 0 0.5px rgba(0, 255, 136, 0.2),
+    200px 250px 0 0.4px rgba(255, 255, 255, 0.15),
+    1050px 600px 0 0.5px rgba(0, 255, 136, 0.3),
+    450px 500px 0 0.3px rgba(255, 255, 255, 0.2);
+  animation: starfield-drift-1 25s ease-in-out infinite;
+}
+
+/* Layer 2 — dimmer, offset positions, opposite drift */
+.starfield::after {
+  box-shadow:
+    170px 200px 0 0.3px rgba(0, 255, 136, 0.2),
+    350px 50px 0 0.5px rgba(255, 255, 255, 0.15),
+    530px 420px 0 0.3px rgba(0, 255, 136, 0.25),
+    720px 280px 0 0.4px rgba(255, 255, 255, 0.15),
+    100px 550px 0 0.3px rgba(0, 255, 136, 0.2),
+    880px 120px 0 0.5px rgba(255, 255, 255, 0.18),
+    1020px 500px 0 0.3px rgba(0, 255, 136, 0.22),
+    1200px 300px 0 0.4px rgba(255, 255, 255, 0.12),
+    280px 380px 0 0.3px rgba(0, 255, 136, 0.2),
+    630px 650px 0 0.5px rgba(255, 255, 255, 0.15),
+    1380px 520px 0 0.3px rgba(0, 255, 136, 0.18),
+    460px 170px 0 0.4px rgba(255, 255, 255, 0.12),
+    810px 750px 0 0.3px rgba(0, 255, 136, 0.2),
+    1150px 180px 0 0.5px rgba(255, 255, 255, 0.15),
+    60px 320px 0 0.3px rgba(0, 255, 136, 0.22);
+  animation: starfield-drift-2 35s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+/* Disable starfield on mobile for performance */
+@media (max-width: 768px) {
+  .starfield::before,
+  .starfield::after {
+    display: none;
+  }
+}
