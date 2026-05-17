@@ -3,6 +3,12 @@ import { Link } from "wouter";
 import { ArrowRight, Play, Camera, Film, Sparkles } from "lucide-react";
 import heroImg1 from "@/assets/images/hero-1.png";
 import ringLogo from "@/assets/kogo_1-Photoroom_1776768884920.png";
+import uttamImg from "@/assets/Unteu6rej6yutitled_1776767797329.png";
+import subhankarImg from "@/assets/Unti0-9iiyyiouiutled_1776767797328.png";
+import arnabImg from "@/assets/Untittreu65ei76led_1776767797328.png";
+import soumyaImg from "@/assets/Unghfireie67rr78oritled_1776767797327.png";
+import suryaImg from "@/assets/Untidutreur54htrde5tled_1776767797326.png";
+import pragyaImg from "@/assets/Untitl7oit07t0ed_1776767797323.png";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -13,9 +19,18 @@ const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2 }
+    transition: { staggerChildren: 0.15 }
   }
 };
+
+const teamMembers = [
+  { name: "Uttam Adhikary", role: "Partner & Founding Member", img: uttamImg, tag: "Founder" },
+  { name: "Subhankar Chandogi", role: "Key Person", img: subhankarImg, tag: "Key People" },
+  { name: "Arnab Adhikary", role: "COO", img: arnabImg, tag: "Leadership" },
+  { name: "Soumyadyuti Dey Chowdhury", role: "Manager — Videography", img: soumyaImg, tag: "Leadership" },
+  { name: "Suryadyuti Banerjee", role: "Manager — Documentation", img: suryaImg, tag: "Leadership" },
+  { name: "Pragya Parinita Das", role: "Manager — Motion Graphics", img: pragyaImg, tag: "Leadership" },
+];
 
 export default function Home() {
   return (
@@ -208,6 +223,106 @@ export default function Home() {
                 </p>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ════════════════════════════════════════════
+           Meet the Team Section
+           ════════════════════════════════════════════ */}
+      <section className="py-20 md:py-32 relative overflow-hidden bg-black">
+        {/* Ambient background effects */}
+        <div aria-hidden className="absolute top-0 left-1/2 -translate-x-1/2 w-[30rem] h-[30rem] md:w-[50rem] md:h-[50rem] bg-primary/[0.04] blur-[80px] md:blur-[140px] rounded-full pointer-events-none" />
+        <div aria-hidden className="absolute bottom-0 right-0 w-[20rem] h-[20rem] bg-primary/[0.03] blur-[60px] md:blur-[100px] rounded-full pointer-events-none" />
+
+        <div className="container mx-auto px-6 md:px-12 relative z-10">
+          {/* Section Header */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            variants={fadeInUp}
+            className="text-center mb-14 md:mb-20"
+          >
+            <span className="inline-block px-4 py-1.5 rounded-full border border-primary/30 text-primary text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase bg-primary/5 mb-6">
+              Our People
+            </span>
+            <h2 className="text-4xl md:text-6xl font-black text-white mb-5 leading-tight">
+              Meet the <span className="text-primary text-glow">Team</span>
+            </h2>
+            <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+              A collective of artists, technicians, and visionaries dedicated to the craft of visual storytelling.
+            </p>
+          </motion.div>
+
+          {/* Team Grid */}
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto"
+          >
+            {teamMembers.map((member, i) => (
+              <motion.div
+                key={i}
+                variants={fadeInUp}
+                className="group relative gpu-accel"
+              >
+                {/* Card */}
+                <div className="relative overflow-hidden rounded-2xl md:rounded-3xl aspect-[3/4] border border-white/[0.08] hover:border-primary/40 transition-all duration-500 shadow-[0_4px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_8px_40px_rgba(0,255,136,0.12)]">
+                  {/* Image */}
+                  <img
+                    src={member.img}
+                    alt={member.name}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 ease-out md:group-hover:scale-110"
+                  />
+
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+
+                  {/* Tag badge */}
+                  <div className="absolute top-3 left-3 sm:top-4 sm:left-4">
+                    <span className="inline-block px-2.5 py-1 sm:px-3 sm:py-1 rounded-full bg-primary/90 text-black text-[8px] sm:text-[10px] font-bold tracking-widest uppercase shadow-[0_0_12px_rgba(0,255,136,0.3)]">
+                      {member.tag}
+                    </span>
+                  </div>
+
+                  {/* Neon accent line at bottom */}
+                  <div className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                  {/* Info */}
+                  <div className="absolute bottom-0 left-0 w-full p-4 sm:p-5 md:p-6">
+                    <h3 className="text-sm sm:text-base md:text-lg font-bold text-white mb-0.5 sm:mb-1 leading-tight">
+                      {member.name}
+                    </h3>
+                    <p className="text-primary/90 font-mono text-[9px] sm:text-[10px] md:text-xs tracking-wider uppercase">
+                      {member.role}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Bottom note + CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-center mt-10 md:mt-16"
+          >
+            <p className="text-gray-500 text-xs sm:text-sm italic mb-6">
+              …and 16 other talented members across 4 states crafting India's finest IEC materials.
+            </p>
+            <Link href="/about">
+              <span className="inline-flex items-center gap-2 text-primary uppercase font-bold tracking-widest text-xs sm:text-sm hover:text-white transition-colors cursor-pointer group">
+                Learn More About Us
+                <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
+              </span>
+            </Link>
           </motion.div>
         </div>
       </section>
