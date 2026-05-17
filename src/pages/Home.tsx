@@ -296,25 +296,63 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Showreel/Video Teaser Section */}
-      <section className="py-20 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/5"></div>
+      {/* ════════════════════════════════════════════
+           CTA Section
+           ════════════════════════════════════════════ */}
+      <section className="py-28 md:py-40 relative overflow-hidden">
+        {/* Background glow orbs */}
+        <div aria-hidden className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[28rem] h-[28rem] md:w-[48rem] md:h-[48rem] bg-primary/[0.06] blur-[100px] md:blur-[160px] rounded-full pointer-events-none" />
+        <div aria-hidden className="absolute bottom-0 left-[10%] w-[16rem] h-[16rem] md:w-[24rem] md:h-[24rem] bg-primary/[0.04] blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
+        <div aria-hidden className="absolute top-[10%] right-[5%] w-[12rem] h-[12rem] md:w-[20rem] md:h-[20rem] bg-primary/[0.03] blur-[60px] md:blur-[100px] rounded-full pointer-events-none" />
+
         <div className="container mx-auto px-6 md:px-12 relative z-10 text-center">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            variants={fadeInUp}
-            className="max-w-4xl mx-auto"
+            variants={staggerContainer}
+            className="max-w-3xl mx-auto flex flex-col items-center"
           >
-            <h2 className="text-3xl md:text-5xl font-black text-white mb-8 leading-tight">
-              Ready to create something <span className="text-glow text-primary italic">unforgettable?</span>
-            </h2>
-            <Link href="/connect">
-              <span className="inline-flex items-center justify-center gap-3 px-10 py-5 bg-white text-black font-black text-lg rounded-full hover:bg-primary hover:shadow-[0_0_40px_rgba(0,255,136,0.6)] transition-all cursor-pointer active:scale-95">
-                Start a Project
-              </span>
-            </Link>
+            {/* Badge */}
+            <motion.span
+              variants={fadeInUp}
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-primary/30 text-primary text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase bg-primary/5 mb-8"
+            >
+              <Sparkles size={12} /> Get Started Today
+            </motion.span>
+
+            {/* Heading — no text-glow */}
+            <motion.h2
+              variants={fadeInUp}
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-5 leading-tight"
+            >
+              Ready to <span className="text-primary italic">Launch?</span>
+            </motion.h2>
+
+            {/* Subtitle */}
+            <motion.p
+              variants={fadeInUp}
+              className="text-gray-400 text-sm sm:text-base md:text-lg max-w-xl mb-10 leading-relaxed"
+            >
+              Let's bring your vision to life. Start a conversation and let our team craft something extraordinary for your brand.
+            </motion.p>
+
+            {/* Buttons */}
+            <motion.div
+              variants={fadeInUp}
+              className="flex flex-col sm:flex-row gap-4 sm:gap-5 w-full sm:w-auto"
+            >
+              <Link href="/about">
+                <span className="px-8 py-3.5 bg-white/[0.04] border border-white/20 text-white font-bold rounded-2xl flex items-center justify-center hover:border-primary/60 hover:bg-white/[0.08] transition-all cursor-pointer text-sm sm:text-base active:scale-95">
+                  About
+                </span>
+              </Link>
+              <Link href="/connect">
+                <span className="px-8 py-3.5 bg-primary text-black font-bold rounded-2xl flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(0,255,136,0.3)] hover:shadow-[0_0_40px_rgba(0,255,136,0.5)] transition-all cursor-pointer text-sm sm:text-base active:scale-95">
+                  Start a Project <ArrowRight size={16} />
+                </span>
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
