@@ -207,7 +207,7 @@ export default function About() {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
           >
             {[
-              { name: "Arnab Adhikary", role: "COO", img: arnabImg },
+              { name: "Arnab Adhikary", role: "CEO", img: arnabImg },
               { name: "Soumyadyuti Dey Chowdhury", role: "Manager — Videography", img: soumyaImg },
               { name: "Suryadyuti Banerjee", role: "Manager — Documentation", img: suryaImg },
               { name: "Pragya Parinita Das", role: "Manager — Motion Graphics", img: pragyaImg },

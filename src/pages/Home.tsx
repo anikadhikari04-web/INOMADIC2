@@ -20,7 +20,7 @@ const staggerContainer = {
 const teamMembers = [
   { name: "Uttam Adhikary", role: "Partner & Founding Member", initial: "U", desc: "Visionary founder driving the creative direction and strategic growth of INOMADIC." },
   { name: "Subhankar Chandogi", role: "Key Person", initial: "S", desc: "Core pillar of the team, overseeing critical operations and partnerships." },
-  { name: "Arnab Adhikary", role: "COO", initial: "A", desc: "Manages day-to-day operations ensuring seamless project delivery every time." },
+  { name: "Arnab Adhikary", role: "CEO", initial: "A", desc: "Manages day-to-day operations ensuring seamless project delivery every time." },
   { name: "Soumyadyuti Dey Chowdhury", role: "Manager — Videography", initial: "S", desc: "Leads the videography division, crafting cinematic brand stories." },
   { name: "Suryadyuti Banerjee", role: "Manager — Documentation", initial: "S", desc: "Heads documentation and content strategy across all productions." },
   { name: "Pragya Parinita Das", role: "Manager — Motion Graphics", initial: "P", desc: "Creates stunning motion graphics and visual effects for every project." },
