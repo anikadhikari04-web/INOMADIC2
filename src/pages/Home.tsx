@@ -300,10 +300,10 @@ export default function Home() {
            CTA Section
            ════════════════════════════════════════════ */}
       <section className="py-28 md:py-40 relative overflow-hidden">
-        {/* Background glow orbs */}
-        <div aria-hidden className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[28rem] h-[28rem] md:w-[48rem] md:h-[48rem] bg-primary/[0.06] blur-[100px] md:blur-[160px] rounded-full pointer-events-none" />
-        <div aria-hidden className="absolute bottom-0 left-[10%] w-[16rem] h-[16rem] md:w-[24rem] md:h-[24rem] bg-primary/[0.04] blur-[80px] md:blur-[120px] rounded-full pointer-events-none" />
-        <div aria-hidden className="absolute top-[10%] right-[5%] w-[12rem] h-[12rem] md:w-[20rem] md:h-[20rem] bg-primary/[0.03] blur-[60px] md:blur-[100px] rounded-full pointer-events-none" />
+        {/* Background glow orbs - Increased intensity */}
+        <div aria-hidden className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[32rem] md:w-[56rem] md:h-[56rem] bg-primary/[0.15] blur-[100px] md:blur-[180px] rounded-full pointer-events-none" />
+        <div aria-hidden className="absolute bottom-0 left-[10%] w-[20rem] h-[20rem] md:w-[28rem] md:h-[28rem] bg-primary/[0.12] blur-[80px] md:blur-[140px] rounded-full pointer-events-none" />
+        <div aria-hidden className="absolute top-[10%] right-[5%] w-[16rem] h-[16rem] md:w-[24rem] md:h-[24rem] bg-primary/[0.1] blur-[60px] md:blur-[120px] rounded-full pointer-events-none" />
 
         <div className="container mx-auto px-6 md:px-12 relative z-10 text-center">
           <motion.div
