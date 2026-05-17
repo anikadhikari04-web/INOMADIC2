@@ -326,7 +326,7 @@ export default function Home() {
               variants={fadeInUp}
               className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-5 leading-tight"
             >
-              Ready to <span className="text-primary italic">Launch?</span>
+              Ready to <span className="text-primary italic">Continue ?</span>
             </motion.h2>
 
             {/* Subtitle */}
