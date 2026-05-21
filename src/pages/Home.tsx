@@ -95,12 +95,12 @@ export default function Home() {
               className="flex flex-col sm:flex-row gap-4 sm:gap-5 w-full sm:w-auto"
             >
               <Link href="/our-works">
-                <span className="px-6 py-3 bg-primary text-black font-bold rounded-2xl flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(0,255,136,0.45)] hover:shadow-[0_0_50px_rgba(0,255,136,0.7)] transition-shadow cursor-pointer text-sm sm:text-base active:scale-95 transition-transform">
+                <span className="px-6 py-3 bg-primary text-black font-bold rounded-full flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(0,255,136,0.45)] hover:shadow-[0_0_50px_rgba(0,255,136,0.7)] transition-shadow cursor-pointer text-sm sm:text-base active:scale-95 transition-transform">
                   Explore Our Work <ArrowRight size={18} />
                 </span>
               </Link>
               <Link href="/contact">
-                <span className="px-6 py-3 bg-white/[0.04] border border-primary/40 text-white font-bold rounded-2xl flex items-center justify-center hover:border-primary hover:bg-primary/5 hover:shadow-[0_0_25px_rgba(0,255,136,0.4)] transition-all cursor-pointer text-sm sm:text-base active:scale-95">
+                <span className="px-6 py-3 bg-white/[0.04] border border-primary/40 text-white font-bold rounded-full flex items-center justify-center hover:border-primary hover:bg-primary/5 hover:shadow-[0_0_25px_rgba(0,255,136,0.4)] transition-all cursor-pointer text-sm sm:text-base active:scale-95">
                   Get in Touch
                 </span>
               </Link>
@@ -346,12 +346,12 @@ export default function Home() {
               className="flex flex-col sm:flex-row gap-4 sm:gap-5 w-full sm:w-auto"
             >
               <Link href="/about">
-                <span className="px-8 py-3.5 bg-white/[0.04] border border-white/20 text-white font-bold rounded-2xl flex items-center justify-center hover:border-primary/60 hover:bg-white/[0.08] transition-all cursor-pointer text-sm sm:text-base active:scale-95">
+                <span className="px-8 py-3.5 bg-white/[0.04] border border-white/20 text-white font-bold rounded-full flex items-center justify-center hover:border-primary/60 hover:bg-white/[0.08] transition-all cursor-pointer text-sm sm:text-base active:scale-95">
                   About
                 </span>
               </Link>
               <Link href="/connect">
-                <span className="px-8 py-3.5 bg-primary text-black font-bold rounded-2xl flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(0,255,136,0.3)] hover:shadow-[0_0_40px_rgba(0,255,136,0.5)] transition-all cursor-pointer text-sm sm:text-base active:scale-95">
+                <span className="px-8 py-3.5 bg-primary text-black font-bold rounded-full flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(0,255,136,0.3)] hover:shadow-[0_0_40px_rgba(0,255,136,0.5)] transition-all cursor-pointer text-sm sm:text-base active:scale-95">
                   Start a Project <ArrowRight size={16} />
                 </span>
               </Link>

@@ -163,7 +163,7 @@ export default function OurWorks() {
               We bring your brand story to life through the lens of artistry and precision. Every frame tells a story.
             </p>
             <Link href="/contact">
-              <span className="inline-block px-10 py-5 bg-white text-black font-bold rounded-xl hover:bg-primary transition-colors cursor-pointer text-lg">
+              <span className="inline-block px-10 py-5 bg-white text-black font-bold rounded-full hover:bg-primary transition-colors cursor-pointer text-lg">
                 Let's Tell Yours
               </span>
             </Link>
