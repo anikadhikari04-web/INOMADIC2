@@ -70,7 +70,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-white leading-[1.05] tracking-tighter mb-6"
+              className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-[1.05] tracking-tighter mb-6"
             >
               We Don't Just Create.
               <br />
@@ -83,7 +83,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mb-10 font-light leading-relaxed"
+              className="text-sm sm:text-base md:text-lg text-gray-400 max-w-xl mb-10 font-light leading-relaxed"
             >
               Crafting brand films, motion graphics & immersive digital experiences that operate at the intersection of art and technology.
             </motion.p>
@@ -95,12 +95,12 @@ export default function Home() {
               className="flex flex-col sm:flex-row gap-4 sm:gap-5 w-full sm:w-auto"
             >
               <Link href="/our-works">
-                <span className="px-7 py-3.5 bg-primary text-black font-bold rounded-2xl flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(0,255,136,0.45)] hover:shadow-[0_0_50px_rgba(0,255,136,0.7)] transition-shadow cursor-pointer text-sm sm:text-base active:scale-95 transition-transform">
+                <span className="px-6 py-3 bg-primary text-black font-bold rounded-2xl flex items-center justify-center gap-3 shadow-[0_0_30px_rgba(0,255,136,0.45)] hover:shadow-[0_0_50px_rgba(0,255,136,0.7)] transition-shadow cursor-pointer text-sm sm:text-base active:scale-95 transition-transform">
                   Explore Our Work <ArrowRight size={18} />
                 </span>
               </Link>
               <Link href="/contact">
-                <span className="px-7 py-3.5 bg-white/[0.04] border border-primary/40 text-white font-bold rounded-2xl flex items-center justify-center hover:border-primary hover:bg-primary/5 hover:shadow-[0_0_25px_rgba(0,255,136,0.4)] transition-all cursor-pointer text-sm sm:text-base active:scale-95">
+                <span className="px-6 py-3 bg-white/[0.04] border border-primary/40 text-white font-bold rounded-2xl flex items-center justify-center hover:border-primary hover:bg-primary/5 hover:shadow-[0_0_25px_rgba(0,255,136,0.4)] transition-all cursor-pointer text-sm sm:text-base active:scale-95">
                   Get in Touch
                 </span>
               </Link>
@@ -109,7 +109,7 @@ export default function Home() {
 
           {/* Ring Logo Column */}
           <div className="lg:col-span-5 flex items-center justify-center relative order-first lg:order-last mb-4 lg:mb-0">
-            <div className="relative w-56 h-56 sm:w-72 sm:h-72 md:w-80 md:h-80 lg:w-[26rem] lg:h-[26rem] flex items-center justify-center">
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-[22rem] lg:h-[22rem] flex items-center justify-center">
               {/* Pulsing aura behind ring — reduced on mobile */}
               <div
                 aria-hidden
@@ -165,7 +165,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 md:py-32 relative bg-black">
+      <section className="py-16 md:py-24 relative bg-black">
         <div className="container mx-auto px-6 md:px-12">
           <motion.div 
             initial="hidden"
@@ -175,7 +175,7 @@ export default function Home() {
             className="mb-16 md:mb-32 flex flex-col md:flex-row md:items-end justify-between gap-8"
           >
             <div>
-              <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+              <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
                 Our <span className="text-primary">Expertise</span>
               </h2>
               <p className="text-gray-400 text-lg md:text-xl max-w-xl">
@@ -224,7 +224,7 @@ export default function Home() {
       {/* ════════════════════════════════════════════
            Meet the Team Section
            ════════════════════════════════════════════ */}
-      <section className="py-20 md:py-32 relative overflow-hidden bg-black">
+      <section className="py-16 md:py-24 relative overflow-hidden bg-black">
         <div className="container mx-auto px-6 md:px-12 relative z-10">
           {/* Section Header */}
           <motion.div
@@ -237,7 +237,7 @@ export default function Home() {
             <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full border border-primary/30 text-primary text-[10px] sm:text-xs font-bold tracking-[0.2em] uppercase bg-primary/5 mb-6">
               <Users size={12} /> Team
             </span>
-            <h2 className="text-4xl md:text-6xl font-black text-white mb-5 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-black text-white mb-5 leading-tight">
               Meet the <span className="text-primary">Team</span>
             </h2>
             <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
@@ -299,7 +299,7 @@ export default function Home() {
       {/* ════════════════════════════════════════════
            CTA Section
            ════════════════════════════════════════════ */}
-      <section className="py-28 md:py-40 relative overflow-hidden">
+      <section className="py-20 md:py-32 relative overflow-hidden">
         {/* Top fade mask to blend seamlessly into black */}
         <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-background to-transparent z-10 pointer-events-none" />
 
@@ -327,7 +327,7 @@ export default function Home() {
             {/* Heading — no text-glow */}
             <motion.h2
               variants={fadeInUp}
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white mb-5 leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-5 leading-tight"
             >
               Ready to <span className="text-primary italic">Continue ?</span>
             </motion.h2>
